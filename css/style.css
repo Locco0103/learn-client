@@ -1,0 +1,39 @@
+body{
+  margin:0;
+  background-color:#ccc;
+  font-family:Helvetica;
+}
+
+input{
+  outline:0;
+}
+
+#main{
+  display:flex;
+  justify-content:center;
+}
+
+#main #todo-list{
+  width:80vw;
+  background-color:#fff;
+  margin-top:200px;
+  padding:20px;
+  border:2px solid #aaa;
+  box-shadow:2px 2px 8px #000;
+  box-sizing:border-box;
+}
+
+#main #todo-list #title{
+  font-size:20px;
+  font-weight:900;
+}
+
+#main #todo-list #todo-form #input{
+  margin-top:10px;
+}
+
+#main #todo-list #todo-contents li{
+  list-style-type:none;
+  margin-top:8px;
+}
+

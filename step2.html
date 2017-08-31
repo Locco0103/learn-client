@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>step2 todolist</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<section id="main">
+  <div id="todo-list">
+    <span id="title">
+      to do list
+    </span>
+    <form id="todo-form">
+      <div id="input">
+        <input type="text" name="text" value="" autofocus>
+        <button id="button" type="submit">追加</button>
+      </div>
+    </form>
+    <ul id="todo-contents"></ul>
+  </div>
+</section>
+
+<script type="text/javascript">
+window.onload = function(){
+
+  // todo追加時の挿入先
+  var todoContents = document.getElementById('todo-contents');
+  // cssセレクタ要素で取得できる querySelector
+  var todoInput = document.querySelector('#todo-form input');
+
+  // todo追加 の関数
+  var addTodo = function(event){
+    // 送信ボタン後戻ってしまうのを防ぐ
+    event.preventDefault();
+    // <span>input に入力した内容</span>　を挿入
+    var span = document.createElement('span');
+      span.textContent = todoInput.value;
+    // <li><span>input に入力した内容</span></li> を todo-contents の子要素として挿入
+    var li = document.createElement('li');
+      li.appendChild(span);
+    todoContents.appendChild(li);
+  };
+
+  // todo-form submitボタンを押すと、関数addTodo　が実行される。
+  var todoForm = document.getElementById('todo-form');
+  todoForm.addEventListener('submit',addTodo);
+
+};
+</script>
+</body>
+</html>
