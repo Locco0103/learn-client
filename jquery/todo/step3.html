@@ -11,8 +11,8 @@
       to do list
     </span>
     <form id="todo-form">
-      <div id="input">
-        <input type="text" name="text" value="" autofocus>
+      <div>
+        <input id="input" type="text" name="text" value="" autofocus>
         <button id="button" type="submit">追加</button>
       </div>
     </form>
@@ -22,24 +22,69 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-$(function(){ 
+$(function() {
+  // ローカルストレージに保存するために用いる配列(仮置き？) items
+  var items = [];
+
+  // items{
+  //   "body":"val",
+  //   "body":"val",
+  //   "body":"val",
+  // }
+
+  // ローカルストレージに保存されているものを出力する関数 localItems
+  var loadItems = function() {
+    // localStorage.getItem
+    var local_str = localStorage.getItem('key');
+    // JSON.parse して items に追加
+    items = JSON.parse(local_str);
+    // #todo-contents に反映
+    if(!items){
+      items = [];
+    } else {
+      for (var i = 0; i < items.length ; i++) {
+        $('#todo-contents').append('<li><span>'+ items[i].body +'</span></li>');
+      }
+    }
+  };
+  // 出力実行
+  loadItems();
+
+// 2. 新しい todo をリストに追加(step2) & 保存 
+
+  // ローカルストレージに保存する関数 saveItems
+  var saveItems = function(item) {
+    // items に item を挿入
+    items.push(item);
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+    debugger;
+  };
 
   // 追加ボタンによりtodo追加
   $('#todo-form').on('submit',function(event){
     // 送信ボタン後戻ってしまうのを防ぐ    
     event.preventDefault();
     // フォーム入力値の取得
-    var val = $("input[name='text']").val();
+    var val = $("#input").val();
+    // 空白の場合は return
+    if(!val){
+      return;
+    }
     // todo を出力
     $('#todo-contents').append('<li><span>'+ val +'</span></li>');
 
-// この todo にkey番号をあたえlocalstrageに保存
-// 1. ローカルストレージに保存されているものを出力
-    localStorage.getItem
-// 2. 新しい todo をリストに追加(step2) & 登録 
-    localStorage.setItem
+    // input text 中身を空に戻す
+    $("#input").val("");
 
+    // item に val(フォーム追加内容)をセット
+    var item = {
+      body: val,
+    };
 
+    saveItems(item);
   });
 });
 </script>
