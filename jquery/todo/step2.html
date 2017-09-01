@@ -11,8 +11,8 @@
       to do list
     </span>
     <form id="todo-form">
-      <div id="input">
-        <input type="text" name="text" value="" autofocus>
+      <div>
+        <input id="input" type="text" name="text" value="" autofocus>
         <button id="button" type="submit">追加</button>
       </div>
     </form>
@@ -29,10 +29,15 @@ $(function(){
     // 送信ボタン後戻ってしまうのを防ぐ    
     event.preventDefault();
     // フォーム入力値の取得
-    var val = $("input[name='text']").val();
+    var val = $("#input").val();
+    // 空白の場合は return
+    if(!val){
+      return;
+    }
     // todo を出力
     $('#todo-contents').append('<li><span>'+ val +'</span></li>');
-
+    // input text 中身を空に戻す
+    $("#input").val("");
   });
 });
 </script>
