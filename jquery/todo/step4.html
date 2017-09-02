@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery step4 todolist</title>
+</head>
+<body>
+<section id="main">
+  <div id="todo-list">
+    <span id="title">
+      to do list
+    </span>
+    <form id="todo-form">
+      <div>
+        <input id="input" type="text" name="text" value="" autofocus>
+        <button id="button" type="submit">追加</button>
+      </div>
+    </form>
+    <ul id="todo-contents"></ul>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function() {
+// ローカルストレージに保存するために用いる配列(仮置き？) items
+
+  var items = []; // 配列
+
+// 1. ローカルストレージに保存されているものを取得出力する関数 localItems
+  var loadItems = function() {
+    // localStorage.getItem
+    var local_str = localStorage.getItem('key');
+    // JSON.parse して items に追加
+    items = JSON.parse(local_str);
+    // #todo-contents に反映
+    if(!items){
+      items = [];
+    } else {
+      for (var i = 0; i < items.length ; i++) {
+        var checkbox = '<input type="checkbox" class="check">';
+        // checkbox と todo内容 を表示
+        $('#todo-contents').append('<li>'+ checkbox +'<span>'+ items[i].body +'</span></li>');
+        // i番目の check が true であれば、check を入れる。 
+        if(items[i].check){
+          $('.check').prop('checked',true);
+        } else {
+          $('.check').prop('checked',false);
+        }
+      }
+    }   
+  };
+
+  // 出力実行
+  loadItems();
+
+// 2. 新しい todo をリストに追加(step2) & 格納 checkboxにcheckが入っていたことも格納(step4)
+  // ローカルストレージに保存する関数 saveItems
+  var saveItems = function(item) {
+    // items に item を挿入
+    items.push(item);
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+  };
+
+  // 追加ボタンによりtodo追加
+  $('#todo-form').on('submit',function(event){
+    // 送信ボタン後戻ってしまうのを防ぐ    
+    event.preventDefault();
+    // フォーム入力値の取得
+    var val = $("#input").val();
+    // 空白の場合は return
+    if(!val){
+      return;
+    }
+    // todo を出力
+    var checkbox = '<input type="checkbox" class="check">';
+    $('#todo-contents').append('<li>'+ checkbox +'<span>'+ val +'</span></li>');
+    // input text 中身を空に戻す
+    $("#input").val("");
+
+    // item に val(フォーム追加内容)をセット
+    var item = {
+      body: val,
+      check: ''
+    };
+
+    saveItems(item);
+  });
+
+// 3. checkbox の チェック機能 を保存
+              // これは毎回スタート時にチェックされてしまう　-> チェックされる度にチェックされたことをlocalstrageへ保存する必要がある。
+  $('.check').on('change',function(){
+    // 4-1. checkbox が checkされてるかをチェック
+    for(var i=0 ; i < items.length; i++){
+          // ここですべての .check で checkされてるものがあったらになり、全部にチェックが入ってしまう。
+      if($(".check").is(':checked')){
+        items[i].check = true;
+      } else {
+        items[i].check = false;
+      }
+    } 
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+  });
+
+
+  // item{
+  //   body:val,check:true,
+  // }
+  // items{
+  //   body:val,
+  //   check:bool,
+  //   body:val,
+  //   check:bool,
+  //   body:val,
+  //   check:bool,
+  // }
+// これだと扱いずらそうなので、
+
+// 配列内オブジェクト
+
+  // item = {
+  //   body:val,
+  //   check:bool
+  // }
+  // items[
+  //   {body:val , check:bool}, 
+  //   {body:val , check:bool}, 
+  //   {body:val , check:bool}, 
+  // ]
+//  items[i].check
+// items = {}; // オブジェクト
+// items['body'] = val;
+// items['check'] = bool;
+
+// step4
+// 4-1. checkbox が checkされてるかをチェック
+//   if($('.check').prop('checked')){
+//     item[i].body.check = true;
+//   } else {
+//     item[i].body.check = false;
+//   }
+
+// 4-2. item.body.check を items に保存し、localstrageへ setItem(ここはもともとと同じ)
+
+// 4-3. getItem で呼び出し、
+//   if(item.body.check = ture){
+//     $('.check').prop('checked','true');
+//   } else {
+//     $('.check').prop('checked','false');
+//   }
+
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
