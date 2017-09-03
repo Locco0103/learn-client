@@ -19,6 +19,11 @@
     <ul id="todo-contents"></ul>
   </div>
 </section>
+<style type="text/css">
+  li{
+    list-style-type: none;
+  }
+</style>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -38,15 +43,24 @@ $(function() {
       items = [];
     } else {
       for (var i = 0; i < items.length ; i++) {
-        var checkbox = '<input type="checkbox" class="check">';
-        // checkbox と todo内容 を表示
-        $('#todo-contents').append('<li>'+ checkbox +'<span>'+ items[i].body +'</span></li>');
-        // i番目の check が true であれば、check を入れる。 
+        // li タグをjQuery で作成
+        var li = $('<li></li>');
+        // checkbox を jQuery で作成
+        var checkbox = $('<input type="checkbox" class="check">')
+        // 値を反映 checked がついていたら、作成するチェックボックスに checked をいれる
         if(items[i].check){
-          $('.check').prop('checked',true);
-        } else {
-          $('.check').prop('checked',false);
+          checkbox.prop('checked',true);
         }
+        // li にチェックボックス追加
+        li.append(checkbox);
+        // span を jQuery で作成 
+        var span = $('<span></span>');
+        // 値を反映 html関数はタグ内に指定値をいれてくれる。
+        span.html(items[i].body);
+        // li に <span>items[i].body</span> 追加
+        li.append(span);
+        //　最後に ul に li 内追加
+        $('#todo-contents').append(li);
       }
     }   
   };
@@ -54,7 +68,7 @@ $(function() {
   // 出力実行
   loadItems();
 
-// 2. 新しい todo をリストに追加(step2) & 格納 checkboxにcheckが入っていたことも格納(step4)
+// 2. 新しい todo 追加(step2) $ localStorage へ 格納(step3)
   // ローカルストレージに保存する関数 saveItems
   var saveItems = function(item) {
     // items に item を挿入
@@ -65,7 +79,7 @@ $(function() {
     localStorage.setItem('key',items_str);
   };
 
-  // 追加ボタンによりtodo追加
+  // todo追加
   $('#todo-form').on('submit',function(event){
     // 送信ボタン後戻ってしまうのを防ぐ    
     event.preventDefault();
@@ -91,19 +105,28 @@ $(function() {
   });
 
 // 3. checkbox の チェック機能 を保存
-              // これは毎回スタート時にチェックされてしまう　-> チェックされる度にチェックされたことをlocalstrageへ保存する必要がある。
-  $('.check').on('change',function(){
-    // 4-1. checkbox が checkされてるかをチェック
-    for(var i=0 ; i < items.length; i++){
-          // ここですべての .check で checkされてるものがあったらになり、全部にチェックが入ってしまう。
-      if($(".check").is(':checked')){
-        items[i].check = true;
-      } else {
-        items[i].check = false;
-      }
-    } 
+// チェックされる度にチェックされたことをlocalstrageへ保存する。
+
+// [Question1] このeはなんでしょう？ 
+  $('.check').on('change',function(e){
+    // タッチされた要素(e.target)の親要素(parentElement == li)が何番目かを取得 index取得
+    var index = $('li').index(e.target.parentElement);
+    // index 番目の item を取得 (items[i] の item = {body:val,check:boolean} となる)
+    var item = items[index];
+
+    // チェック状態によって item のフラグを変更 (item が正しく格納)
+    if (e.target.checked) {
+      item.check = true;
+    } else {
+      item.check = false;
+    }
+// [Question2] e.target に checked がついてるかの確認は prop('chedked')でなくてもいいのでしょうか？問題なく動作はしています。
+
+// [Question3] item を items に入れ直さなくていいでしょうか？
+
     // JSON.stringify して文字列に変換 (一つの長い文字列)
     var items_str = JSON.stringify(items);
+
     // localStorage.setItem
     localStorage.setItem('key',items_str);
   });
