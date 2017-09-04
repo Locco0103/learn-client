@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery step5 todolist</title>
+</head>
+<body>
+<section id="main">
+  <div id="todo-list">
+    <span id="title">
+      to do list
+    </span>
+    <form id="todo-form">
+      <div>
+        <input id="input" type="text" name="text" value="" autofocus>
+        <button id="button" type="submit">追加</button>
+      </div>
+    </form>
+    <ul id="todo-contents"></ul>
+  </div>
+</section>
+<style type="text/css">
+  li { list-style-type: none; }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function() {
+// ローカルストレージに保存するために用いる配列(仮置き？) items
+
+  var items = []; // 配列
+
+// 1. ローカルストレージに保存されているものを取得出力する関数 localItems
+  var loadItems = function() {
+    // localStorage.getItem
+    var local_str = localStorage.getItem('key');
+    // JSON.parse して items に追加
+    items = JSON.parse(local_str);
+    // #todo-contents に反映
+    if(!items){
+      items = [];
+    } else {
+      for (var i = 0; i < items.length ; i++) {
+        // li タグをjQuery で作成
+        var li = $('<li></li>');
+        // checkbox を jQuery で作成
+        var checkbox = $('<input type="checkbox" class="check">');
+        // 値を反映 checked がついていたら、作成するチェックボックスに checked をいれる
+        if(items[i].check){
+          checkbox.prop('checked',true);
+        }
+        // li にチェックボックス追加
+        li.append(checkbox);
+        // span を jQuery で作成 
+        var span = $('<span class="span"></span>');
+        // 値を反映 html関数はタグ内に指定値をいれてくれる。
+        span.html(items[i].body);
+        // li に <span>items[i].body</span> 追加
+        li.append(span);
+        //　最後に ul に li 内追加
+        $('#todo-contents').append(li);
+      }
+    }   
+  };
+
+  // 出力実行
+  loadItems();
+
+// 2. 新しい todo 追加(step2) $ localStorage へ 格納(step3)
+  // ローカルストレージに保存する関数 saveItems
+  var saveItems = function(item) {
+    // items に item を挿入
+    items.push(item);
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+  };
+
+  // todo追加
+  $('#todo-form').on('submit',function(event){
+    // 送信ボタン後戻ってしまうのを防ぐ    
+    event.preventDefault();
+    // フォーム入力値の取得
+    var val = $("#input").val();
+    // 空白の場合は return
+    if(!val){
+      return;
+    }
+    // todo を出力
+    var li = $('<li></li>');
+    var checkbox = $('<input type="checkbox" class="check">');
+    var span = $('<span class="span"></span>');
+// [Qustion4]    $(li) と li の違いは？
+    li.append(checkbox);
+    span.html(val);
+    li.append(span);
+    $('#todo-contents').append(li);
+    // input text 中身を空に戻す
+    $("#input").val("");
+
+    // item に val(フォーム追加内容)をセット
+    var item = {
+      body: val,
+      check: ''
+    };
+
+    saveItems(item);
+  });
+
+// 3. checkbox の チェック機能 を保存
+// チェックされる度にチェックされたことをlocalstrageへ保存する。
+
+// [Question1] このeはなんでしょう？ 
+  $('.check').on('change',function(e){
+    // タッチされた要素(e.target)の親要素(parentElement == li)が何番目かを取得 index取得
+    var index = $('li').index(e.target.parentElement);
+    // index 番目の item を取得 (items[i] の item = {body:val,check:boolean} となる)
+    var item = items[index];
+
+    // チェック状態によって item のフラグを変更 (item が正しく格納)
+    if (e.target.checked) {
+      item.check = true;
+    } else {
+      item.check = false;
+    }
+// [Question2] e.target に checked がついてるかの確認は prop('chedked')でなくてもいいのでしょうか？問題なく動作はしています。
+
+// [Question3] item を items に入れ直さなくていいでしょうか？
+
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+  });
+
+// step5
+// 5-1. テキスト <span>item</span> をクリックすると、item が 初期値(value='item.body')の<input type="text"> を生成。
+//   1. click すると、その文章を変数へ保存 (保存せずとも、index を取得しその番号のitemsを引っ張ってきてもよい) し、span を消す。
+  $('.span').dblclick(function(e){
+    var index = $('li').index(e.target.parentElement);
+    // 変更前の値を取得
+    var spanVal = $(this).text();
+//   2. 保存した文章をもった <input type="text" value='変更前テキスト' classいる？> と 変更ボタン <button type="submit"> を表示(<form class ="change-form"> タグで囲う)
+    // form input button の生成
+    var form = $('<form id="change-form"></form>');
+    // これがないと submit が効かない。
+    $(form).appendTo($('body:first'));
+    var input = $("<input type='text' class='change-input'>");
+    var button = $('<button type="submit">変更</button>');
+    // 変更フォーム 表示
+    input.val(spanVal);
+    form.append(input);
+    form.append(button);
+    $(this).parent('li').append(form);
+    // dblclick したらはじめから値を選択
+    input.select();
+    // $(this) を用いるために、最後に span を消す 
+    $(this).remove();
+  });
+
+// 5-2. input内、書き換えた文章を新しくlocalStorage に保存し、再度リストに追加
+//   1. 変更ボタンを押すと、item に格納され、それが i 番目のitems に保存される。(5-1-1. でindex を保存する必要あり。var index = $('li').index(e.target.parentElement);)
+  $('#change-form').on('submit',function(event){
+    // 送信ボタン後戻ってしまうのを防ぐ    
+// この時点でデバッガーが発動しないので、 on submit さえ実行されていない。
+
+    debugger;
+
+    event.preventDefault();
+
+    debugger;
+    // 入力値の取得
+    var val = $(".change-input").val();
+    // 空白の場合は戻る
+    if(!val){
+      return;
+    }
+    // todo を出力
+    // その場で取得した内容で li 内に出力
+    var span = $('<span class="span"></span>');
+    span.html(val);
+    $(this).parents('li').append(span);
+
+    // form ごとを消去　後回し
+    // $(form).remove();
+
+    var item = {
+      body: val
+    };
+
+  });
+
+//   2. JSON.stringify(items) で文字列変換して、　localStorage.setItem(hoge)
+
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
