@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>length checker</title>
+  <style type="text/css">
+    .container{
+      font-family:Verdana;
+      width:400px;
+      background-color:#aaa;
+      border-radius:10px;
+      margin:30px auto;
+      padding:30px;
+    }
+    #comment{
+      width:400px;
+      height:200px;
+      box-sizing: border-box;
+      padding:20px;
+      margin-bottom:14px;
+      line-height:1.5;
+      font-size:18px;
+      font-family:Verdana;
+      border:none;
+      border-radius:10px;
+    }
+    #comment:focus{
+      outline:none;
+    }
+    .submit{
+      float:right;
+      width:100px;
+      height:30px;
+      line-height:30px;
+      border-radius:5px;
+      background-color:#613613;
+      box-shadow:0 4px 0 #351e10;
+      color:#fff;
+      text-align:center;
+    }
+    .submit:hover{
+      opacity:0.6;
+    }
+    .container p{
+      margin:0;
+      font-size:14px;
+      padding-top:8px;
+    }
+    #label{
+      font-weight:bold;
+    }
+    #label.out{
+      color:#f00;
+    }
+    #label.almost{
+      color:yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <textarea id="comment" placeholder="your comment here"></textarea>
+    <div class="submit">Submit</div>
+    <p><span id="label">30</span> text left</p>
+  </div>
+  <script type="text/javascript">
+  (function(){
+    'use strict'
+    var comment = document.getElementById('comment');
+    var label = document.getElementById('label');
+    var LIMIT = 30;
+    var PINCH = 10;
+
+    comment.addEventListener('keyup',function(){
+       var remain = LIMIT - comment.value.length;
+       label.textContent = remain;
+       if(remain < 0){
+        label.className = 'out';
+       } else if(remain < PINCH){
+        label.className = 'almost';
+       } else {
+        label.className = '';        
+       }
+    });
+
+  })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

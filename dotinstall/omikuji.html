@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>omikuji</title>
+  <style type="text/css">
+    #btn {
+      background-color:#888;
+      height:500px;
+      width:500px;
+      border-radius:50%;
+      color:#fff;
+      margin:10px auto 0px;
+      text-align:center;
+      line-height:500px;
+      font-size:60px;
+      font-weight:bold;
+      box-shadow:0 30px 0 #333;
+      border:3px solid #666;
+      opacity:0.9;
+    }
+    #btn:hover {
+      opacity:1.0;
+    }
+    #btn.pushed{
+      margin:26px auto 0px;
+      box-shadow:0 14px 0 #333;
+      user-select:none;
+    }
+  </style>
+</head>
+<body>
+  <div id="btn">?</div>
+
+  <script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click',function(){
+      var results = ['軸屋','上松','舟口','simiraa','小島'];
+      var n = Math.floor(Math.random() * results.length);
+      this.textContent = results[n];
+    });
+    btn.addEventListener('mousedown',function(){
+      this.className = 'pushed';
+    });
+    btn.addEventListener('mouseup',function(){
+      this.className = '';
+    });
+
+  </script>
+</body>
+</html>

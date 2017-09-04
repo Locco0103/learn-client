@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>sprit the bill</title>
+  <style type="text/css">
+    #container{
+      margin:30px auto;
+      font-size:16px;
+      font-family:serif;
+      width:600px;
+      background-color:#efefef;
+      text-align:center;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    h1{
+      font-size:30px;
+      line-height:30px;
+      margin-top:50px;
+    }
+    p{
+      width:500px;
+    }
+    input{
+      padding:10px;
+      margin:10px;
+      text-align:right;
+    }
+    #button{
+      font-size:20px;
+      font-weight:bold;
+      width:200px;
+      background:#faa;
+      border-radius:20px;
+      padding:20px;
+      color:#fff;
+      box-shadow:2px 2px 2px #c88;
+      opacity:0.7;
+    }
+    #button:hover{
+      opacity:1;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>割り勘計算</h1>
+    <p>金額<input id="price" type="text" value="0"></p>
+    <p>人数<input id="num" type="text" value="0"></p>
+    <div id="button">計算</div>
+    <p id="result"></p>
+  </div>
+  <script type="text/javascript">
+    var price = document.getElementById('price');
+    var num = document.getElementById('num');
+    var button = document.getElementById('button');
+    var result = document.getElementById('result');
+    var x1;
+    var y1;
+    var x2;
+    var y2;
+    var unit = 100;
+
+    price.addEventListener('click',function(){
+      this.select();
+    })
+    num.addEventListener('click',function(){
+      this.select();
+    })
+
+    button.addEventListener('click',function(){
+      var priceVal = price.value;
+      var numVal = num.value;
+
+      if( priceVal.match(/^[1-9][0-9]*$/) && numVal.match(/^[1-9][0-9]*$/)){
+        
+        if( priceVal % numVal === 0){
+          result.textContent = '一人あたり' + (priceVal / numVal) + '円です。';
+        } else {
+          x1 = Math.floor(priceVal / numVal / unit) * unit;
+          y1 = priceVal - ( x1 * numVal);
+          x2 = Math.ceil(priceVal / numVal / unit) * unit;
+          y2 = Math.abs(priceVal - ( x2 * numVal));
+          result.innerHTML = '一人あたり' + x1 + '円だと、' + y1 + '円足りません。<br>' + '一人あたり' + x2 + '円だと、' + y2 + '円余ります。';
+        }
+
+      } else {
+        result.textContent = '入力された文字はダメダメ';
+      }
+    });
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
