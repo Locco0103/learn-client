@@ -70,6 +70,43 @@ $(function() {
     var delbtn = $("<button class='del'>削除</button>");
     delbtn.on('click', delItem);
     li.append(delbtn);
+
+    // フォームを追加(初期は隠す)
+    // form input button の生成
+    var form = $('<form class="change-form"></form>');
+    var input = $("<input type='text' class='change-input'>");
+    var button = $('<button type="submit">変更</button>');
+    // 変更フォーム 表示
+    form.append(input);
+    form.append(button);
+
+    form.hide();
+
+    // 更新時の関数を登録
+    form.on('submit', function(event) {
+      // 送信ボタン後戻ってしまうのを防ぐ    
+      event.preventDefault();
+      // 入力値の取得
+      var val = $(input).val();
+      // 空白の場合は戻る".change-input"
+      if(!val){
+        return;
+      }
+
+      // form を非表示
+      form.hide();
+      // span と del を表示　
+      span.html(val);
+      span.show();
+      delbtn.show();
+
+      // 変更内容を反映
+      item.body = val;
+      saveItems();
+    });
+
+    li.append(form);
+
     //　最後に ul に li 内追加
     $('#todo-contents').append(li);
   };
@@ -90,52 +127,22 @@ $(function() {
     var item = items[index];
     // 変更前の値を取得
     var spanVal = $(this).text();
-//   2. 保存した文章をもった <input type="text" value='変更前テキスト' classいる？> と 変更ボタン <button type="submit"> を表示(<form class ="change-form"> タグで囲う)
-    // form input button の生成
-    var form = $('<form id="change-form"></form>');
-    var input = $("<input type='text' class='change-input'>");
-    var button = $('<button type="submit">変更</button>');
-    // 変更フォーム 表示
+
+    var li = $(this).parent('li');
+
+    // span と del を非表示
+    li.find('.span').hide();
+    li.find('.del').hide();
+
+    // form を取得
+    var form = li.find('.change-form');
+    // form を表示
+    form.show();
+    // input を取得
+    var input = form.find('.change-input');
+    // input の初期値をセット
     input.val(spanVal);
-    form.append(input);
-    form.append(button);
-    $(this).parent('li').append(form);
-    // dblclick したらはじめから値を選択
     input.select();
-    // $(this) を用いるために、最後に span を消す 
-    $(this).next().remove();
-    $(this).remove();
-
-// 5-2. input内、書き換えた文章を新しくlocalStorage に保存し、再度リストに追加
-//   1. 変更ボタンを押すと、item に格納され、それが i 番目のitems に保存される。(5-1-1. でindex を保存する必要あり。var index = $('li').index(e.target.parentElement);)
-    $(form).on('submit',function(event){
-      // 送信ボタン後戻ってしまうのを防ぐ    
-      event.preventDefault();
-      // 入力値の取得
-      var val = $(input).val();
-      // 空白の場合は戻る".change-input"
-      if(!val){
-        return;
-      }
-      // todo を出力
-      // その場で取得した内容で li 内に出力
-      var span = $('<span class="span"></span>');
-      span.html(val);
-      var delbtn = $("<button class='del'>削除</button>");
-      $(this).parents('li').append(span);
-      $(this).parents('li').append(delbtn);
-
-      // form ごとを消去　後回し
-      $(form).remove();
-      // item{body:val} とした。
-      item.body = val;
-
-//   2. 変更内容の保存 item は items[index] を参照しているので、items で保存ok
-      // JSON.stringify(items) で文字列変換して、　localStorage.setItem(hoge)
-      saveItems();
-
-    });
-
   };
 
 // 2. 新しい todo 追加(step2) $ localStorage へ 格納(step3)
@@ -171,7 +178,9 @@ $(function() {
       check: ''
     };
 
+    // item を表示
     renderItem(item);
+    // item を追加
     addItems(item);
 
     // input text 中身を空に戻す
@@ -195,7 +204,7 @@ $(function() {
     }
 
     saveItems();
-  });x`
+  });
 
 
   // 出力実行
