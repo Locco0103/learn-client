@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>jQuery step5 todolist</title>
+  <title>jQuery step6 todolist</title>
 </head>
 <body>
 <section id="main">
@@ -59,14 +59,33 @@ $(function() {
         span.html(items[i].body);
         // li に <span>items[i].body</span> 追加
         li.append(span);
+        // 削除ボタンを jQuery で生成
+        var delbtn = $("<button class='del'>削除</button>");
+        li.append(delbtn);
         //　最後に ul に li 内追加
         $('#todo-contents').append(li);
       }
     }   
-  };
+  }
 
   // 出力実行
   loadItems();
+
+  // 削除ボタンを押すと、画面から削除する関数 delItems()
+  var delItems = function(){
+    $('.del').on('click',function(e){
+      // 削除ボタンが何行目 の items か取得　ローカルストレージ編集に使用
+      var index = $('li').index(e.target.parentElement);
+      // クリックした行を削除
+      $(e.target).parent('li').remove();
+      // items から削除し、ローカルストレージへ保存
+      items.splice(index, 1);
+      saveItems();
+    });
+  }
+
+  //削除実行
+  delItems();
 
 // 2. 新しい todo 追加(step2) $ localStorage へ 格納(step3)
   // ローカルストレージに保存だけする関数 saveItems()
@@ -97,10 +116,12 @@ $(function() {
     var li = $('<li></li>');
     var checkbox = $('<input type="checkbox" class="check">');
     var span = $('<span class="span"></span>');
-// [Qustion4]    $(li) と li の違いは？
+    // 削除ボタンの生成
+    var delbtn = $("<button class='del'>削除</button>");
     li.append(checkbox);
     span.html(val);
     li.append(span);
+    li.append(delbtn);
     $('#todo-contents').append(li);
     // input text 中身を空に戻す
     $("#input").val("");
@@ -112,13 +133,17 @@ $(function() {
     };
 
     addItems(item);
+
+    // 追加された todolist 削除
+    delItems();
+
+    // 追加された todolist 変更
+    changeItems();
+
   });
 
 // 3. checkbox の チェック機能 を保存
 // チェックされる度にチェックされたことをlocalstrageへ保存する。
-
-// [Question1] このeはなんでしょう？ 
-  // 変数e(なんでもいい) に様々なデータが持たされ、 'change'　などをひきだせる
 
   $('.check').on('change',function(e){
     // タッチされた要素(e.target)の親要素(parentElement == li)が何番目かを取得 index取得
@@ -132,15 +157,6 @@ $(function() {
     } else {
       item.check = false;
     }
-// [Question2] e.target に checked がついてるかの確認は prop('chedked')でなくてもいいのでしょうか？問題なく動作はしています。
-  // javascript : e.target.checked         / html5よりできた
-  // jQuery     : e.target.prop('checked') / 昔のやり方
-  // javascript, jQyery 区別を意識して
-
-// [Question3] item を items に入れ直さなくていいでしょうか？
-  // 参照値というもの
-  // = 数字・文字列は代入される ・　オブジェクトは参照値となりアドレスを取得することになる
-  // 今回　var item = items[index] は item が items[index] というアドレスを取得しているため、item を変更すれば items[index] も変更される。
 
     saveItems();
   });
@@ -148,56 +164,94 @@ $(function() {
 // step5
 // 5-1. テキスト <span>item</span> をクリックすると、item が 初期値(value='item.body')の<input type="text"> を生成。
 //   1. click すると、その文章を変数へ保存 (保存せずとも、index を取得しその番号のitemsを引っ張ってきてもよい) し、span を消す。
-  $('.span').dblclick(function(e){
-    var index = $('li').index(e.target.parentElement);
-    // index 番目の item アドレス取得 (items[i] の item = {body:val,check:boolean} となる)
-    var item = items[index];
-    // 変更前の値を取得
-    var spanVal = $(this).text();
-//   2. 保存した文章をもった <input type="text" value='変更前テキスト' classいる？> と 変更ボタン <button type="submit"> を表示(<form class ="change-form"> タグで囲う)
-    // form input button の生成
-    var form = $('<form id="change-form"></form>');
-    var input = $("<input type='text' class='change-input'>");
-    var button = $('<button type="submit">変更</button>');
-    // 変更フォーム 表示
-    input.val(spanVal);
-    form.append(input);
-    form.append(button);
-    $(this).parent('li').append(form);
-    // dblclick したらはじめから値を選択
-    input.select();
-    // $(this) を用いるために、最後に span を消す 
-    $(this).remove();
+  var changeItems = function(){
+    $('.span').dblclick(function(e){
+      var index = $('li').index(e.target.parentElement);
+      // index 番目の item アドレス取得 (items[i] の item = {body:val,check:boolean} となる)
+      var item = items[index];
+      // 変更前の値を取得
+      var spanVal = $(this).text();
+  //   2. 保存した文章をもった <input type="text" value='変更前テキスト' classいる？> と 変更ボタン <button type="submit"> を表示(<form class ="change-form"> タグで囲う)
+      // form input button の生成
+      var form = $('<form id="change-form"></form>');
+      var input = $("<input type='text' class='change-input'>");
+      var button = $('<button type="submit">変更</button>');
+      // 変更フォーム 表示
+      input.val(spanVal);
+      form.append(input);
+      form.append(button);
+      $(this).parent('li').append(form);
+      // dblclick したらはじめから値を選択
+      input.select();
+      // $(this) を用いるために、最後に span を消す 
+      $(this).next().remove();
+      $(this).remove();
 
-// 5-2. input内、書き換えた文章を新しくlocalStorage に保存し、再度リストに追加
-//   1. 変更ボタンを押すと、item に格納され、それが i 番目のitems に保存される。(5-1-1. でindex を保存する必要あり。var index = $('li').index(e.target.parentElement);)
-    $(form).on('submit',function(event){
-      // 送信ボタン後戻ってしまうのを防ぐ    
-      event.preventDefault();
-      // 入力値の取得
-      var val = $(input).val();
+  // 5-2. input内、書き換えた文章を新しくlocalStorage に保存し、再度リストに追加
+  //   1. 変更ボタンを押すと、item に格納され、それが i 番目のitems に保存される。(5-1-1. でindex を保存する必要あり。var index = $('li').index(e.target.parentElement);)
+      $(form).on('submit',function(event){
+        // 送信ボタン後戻ってしまうのを防ぐ    
+        event.preventDefault();
+        // 入力値の取得
+        var val = $(input).val();
+        // 空白の場合は戻る".change-input"
+        if(!val){
+          return;
+        }
+        // todo を出力
+        // その場で取得した内容で li 内に出力
+        var span = $('<span class="span"></span>');
+        span.html(val);
+        var delbtn = $("<button class='del'>削除</button>");
+        $(this).parents('li').append(span);
+        $(this).parents('li').append(delbtn);
 
-      // 空白の場合は戻る".change-input"
-      if(!val){
-        return;
-      }
-      // todo を出力
-      // その場で取得した内容で li 内に出力
-      var span = $('<span class="span"></span>');
-      span.html(val);
-      $(this).parents('li').append(span);
+        // form ごとを消去　後回し
+        $(form).remove();
+        // item{body:val} とした。
+        item.body = val;
 
-      // form ごとを消去　後回し
-      $(form).remove();
-      // item{body:val} とした。
-      item.body = val;
+  //   2. 変更内容の保存 item は items[index] を参照しているので、items で保存ok
+        // JSON.stringify(items) で文字列変換して、　localStorage.setItem(hoge)
+        saveItems();
+        // 変更後も削除機能を
+        delItems();
 
-//   2. 変更内容の保存 item は items[index] を参照しているので、items で保存ok
-      // JSON.stringify(items) で文字列変換して、　localStorage.setItem(hoge)
-      saveItems();
-
+      });
     });
-  });
+  }
+
+  changeItems();
+// step6. 削除機能の実装
+// 6-1 todo 追加とともに、削除ボタン生成
+// 1. 追加時に生成
+// clear
+// 2. 削除ボタンリロード時にも消さない
+// clear
+
+//  6-2 削除ボタンをおすと
+// 1. 画面から削除
+//   1-1. ロードされたものを削除
+//   clear
+//   1-2. 新しく追加されたものを削除
+//   clear
+// 2. ローカルストレージから削除
+//   items[index] を削除
+//      items.splice(index, 1); // items の index 番目 から 1つを削除
+//    ローカルストレージに再登録
+//    saveItems();
+// 2-1 ローカルストレージから取得した todo 削除
+// clear
+// 2-2 追加した todo 削除
+// clear
+// 2-3 変更した todo 削除
+// clear
+
+// 新しく気付いた点
+// - 追加したばかりの todo を変更できない。
+// clear
+// - 変更が一回しかできない問題　繰り返し変更がきかない
+// nonclear
 });
 
 </script>
