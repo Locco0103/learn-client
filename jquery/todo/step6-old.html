@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery step6-old todolist</title>
+</head>
+<body>
+<section id="main">
+  <div id="todo-list">
+    <span id="title">
+      to do list
+    </span>
+    <form id="todo-form">
+      <div>
+        <input id="input" type="text" name="text" value="" autofocus>
+        <button id="button" type="submit">追加</button>
+      </div>
+    </form>
+    <ul id="todo-contents"></ul>
+  </div>
+</section>
+<style type="text/css">
+  li { list-style-type: none; }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function() {
+// ローカルストレージに保存するために用いる配列(仮置き？) items
+
+  window.items = []; // 配列
+
+// 1. ローカルストレージに保存されているものを取得出力する関数 localItems
+  var loadItems = function() {
+    // localStorage.getItem
+    var local_str = localStorage.getItem('key');
+    // localStorage が空の時、この処理を終了
+    if (!local_str) return;
+    // JSON.parse して items に追加
+    items = JSON.parse(local_str);
+    // #todo-contents に反映
+    if(items){
+      for (var i = 0; i < items.length ; i++) {
+        renderItem(items[i]);
+      }
+    }   
+  };
+
+  // item から DOM を構築して追加する
+  var renderItem = function(item){
+    // li タグをjQuery で作成
+    var li = $('<li></li>');
+    // checkbox を jQuery で作成
+    var checkbox = $('<input type="checkbox" class="check">');
+    // span を jQuery で作成 
+    var span = $('<span class="span"></span>');
+    // checkbox にチェックが入った時
+    checkbox.on('change',saveCheckbox);
+
+    // 値を反映 checked がついていたら、作成するチェックボックスに checked をいれる
+    if(item.check){
+      checkbox.prop('checked',true);
+    }
+    // li にチェックボックス追加
+    li.append(checkbox);
+    // 値を反映 html関数はタグ内に指定値をいれてくれる。
+    span.html(item.body);
+    // span をダブルクリックしたら変更される関数 changeItem
+    span.dblclick(changeItem);
+    // li に <span>items[i].body</span> 追加
+    li.append(span);
+    // 削除ボタンを jQuery で生成
+    var delbtn = $("<button class='del'>削除</button>");
+    // 削除ボタンを押すと、画面から削除する関数 delItems()
+    delbtn.on('click',delItem);
+    li.append(delbtn);
+
+    // 変更時のフォームの作成
+    var form = $('<form class="change-form"></form>');
+    var input = $("<input type='text' class='change-input'>");
+    var button = $('<button type="submit">変更</button>');
+    // 初期値 value は changeItem にて入れる
+    form.append(input);
+    form.append(button);
+    // はじめは非表示
+    form.hide();
+
+    form.on('submit',function(event){
+      // 送信ボタン後戻ってしまうのを防ぐ    
+      event.preventDefault();
+      // 入力値の取得
+      var val = $(input).val();
+      // 空白の場合は戻る".change-input"
+      if(!val) return;
+      // 変更フォームを非表示
+      form.hide();
+      // todo を出力
+      // その場で取得した内容で li 内に出力
+      span.html(val);
+      span.show();
+      delbtn.show();
+      // item{body:val} とした。
+      item.body = val;
+      saveItems();
+    });
+
+    // 送信ボタンを押すと上の動きをするような form をliへ追加
+    li.append(form);
+
+    // ul に li 内追加
+    $('#todo-contents').append(li);    
+  };
+
+
+  var saveCheckbox = function(e){
+    // タッチされた要素(e.target)の親要素(parentElement == li)が何番目かを取得 index取得
+    var index = $('li').index(e.target.parentElement);
+    // index 番目の item を取得 (items[i] の item = {body:val,check:boolean} となる)
+    var item = items[index];　// 参照
+
+    // チェック状態によって item のフラグを変更 (item が正しく格納)
+    if (e.target.checked) {
+      item.check = true;
+    } else {
+      item.check = false;
+    }
+    saveItems();
+  };
+
+
+  var delItem = function(e){
+    // 削除ボタンが何行目 の items か取得　ローカルストレージ編集に使用
+    var index = $('li').index(e.target.parentElement);
+    // クリックした行を削除
+    $(e.target).parent('li').remove();
+    // items から削除し、ローカルストレージへ保存
+    items.splice(index, 1);
+    saveItems();
+  };
+
+  var changeItem = function(e){
+    var index = $('li').index(e.target.parentElement);
+    // index 番目の item アドレス取得 (items[i] の item = {body:val,check:boolean} となる)
+    var item = items[index];
+    // 変更前の値を取得
+    var spanVal = $(this).text();
+
+// これの必要性を要チェック この要素のだけ変更する必要があるためか！！
+    var li = $(this).parent('li');
+
+    // 変更前の span と del を非表示 
+    li.find('.span').hide();
+    li.find('.del').hide();
+
+// これの必要性を要チェック
+    // form を取得
+    var form = li.find('.change-form');
+    // 変更フォームを表示
+    form.show();
+    // input を取得
+    var input = li.find('.change-input');
+    // input の初期値をセット
+    input.val(spanVal);
+    input.select();
+  };
+
+
+  // ローカルストレージに保存だけする関数 saveItems()
+  var saveItems = function() {
+    // JSON.stringify して文字列に変換 (一つの長い文字列)
+    var items_str = JSON.stringify(items);
+    // localStorage.setItem
+    localStorage.setItem('key',items_str);
+  };
+
+  // item を items に追加し、ローカルストレージに保存する関数 addItems()
+  var addItems = function(item) {
+    // items に item を挿入
+    items.push(item);
+    
+    saveItems();    
+  }
+
+  // todo追加
+  $('#todo-form').on('submit',function(event){
+    // 送信ボタン後戻ってしまうのを防ぐ    
+    event.preventDefault();
+    // フォーム入力値の取得
+    var val = $("#input").val();
+    // 空白の場合は return
+    if (!val) return;
+
+    // item に val(フォーム追加内容)をセット
+    var item = {
+      body: val,
+      check: ''
+    };
+
+    // item を表示
+    renderItem(item);
+    // item を追加(localstorageへ)
+    addItems(item);
+    // input text 中身を空に戻す
+    $("#input").val("");
+
+  });
+
+    // 出力実行
+  loadItems();
+
+// リファクタ
+// 1. 関数の実行の重複を削除
+//     ・itemの生成
+//     ・変更ボタン
+//     ・削除ボタン
+//     を生成時に関数を用いて組み込む
+//  ・チェック機能の保存        
+// 2. 関数を用いて、短縮
+
+
+// var hoge = function(){
+//  }; ここの; dotinstall ではつけていなかったかチェック
+
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
