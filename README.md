@@ -21,3 +21,20 @@
     - step4.html
     - step5.html
     - step6.html
+
+
+
+## 2. lp を作ろう
+
+
+ディレクトリ構成
+
+- lp
+  - bankjoy
+    - index.html
+      - https://cdn.rawgit.com/phi-jp/meltline/v0.0.8/meltline.css
+    - style.css
+    - main.js
+    - images
+      - 画像を置いてく
+
