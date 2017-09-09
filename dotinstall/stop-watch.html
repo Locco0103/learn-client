@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>stop watch</title>
+  <style type="text/css">
+    button{
+      background-color:#c33;
+    }
+    button.inactive{
+      background-color:#fff;
+    }
+    button:focus{
+      outline:none;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">00:00.000</div>
+  <button id="start">start</button>
+  <button id="stop">stop</button>
+  <button id="reset">reset</button>
+  <script type="text/javascript">
+    var timer = document.getElementById('timer');
+    var start = document.getElementById('start');
+    var stop = document.getElementById('stop');
+    var reset = document.getElementById('reset');
+    var startTime;
+    var elapsedTime = 0;
+    var timerId;
+    var addTime = 0;
+    var check = false;
+
+    function classMake(startState,stopState,resetState){
+      start.className = startState ? '' : 'inactive';
+      stop.className = stopState ? '' : 'inactive';
+      reset.className = resetState ? '' : 'inactive';
+    }
+
+    classMake(true,false,false);
+
+    // 取得したタイマーの時間を　表示を見やすくし、　document に表示させる。
+    function updateTimerText(){
+      var m = Math.floor( elapsedTime / 60000 );
+      var s = Math.floor( elapsedTime % 60000 / 1000 );
+      var ms = elapsedTime % 1000;
+
+      m = ("0" + m).slice(-2);
+      s = ("0" + s).slice(-2);
+      ms = ("00" + ms).slice(-3);
+
+      var result = m + ":" + s + "." + ms;
+      timer.textContent = result;      
+    }
+
+    // start からの時間を随時取得する
+    function countUp(){
+      timerId = setTimeout(function(){
+        elapsedTime = Date.now() - startTime + addTime;   //msで表示されている。
+        updateTimerText();
+        countUp();
+      },10)
+    }
+
+    // start ボタン押す
+    start.addEventListener('click',function(){
+      if(check) return;
+      check = true;
+      classMake(false,true,false);
+      startTime = Date.now();
+      countUp();
+    });
+
+    // stop ボタンを押す
+    stop.addEventListener('click',function(){
+      if(!check) return;
+      check = false;
+      classMake(true,false,true);
+      addTime += elapsedTime;
+      clearTimeout(timerId);
+    });
+
+    // reset ボタンを押す
+    reset.addEventListener('click',function(){
+      classMake(true,false,false);
+      elapsedTime = 0;
+      addTime = 0;
+      updateTimerText();
+    });
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

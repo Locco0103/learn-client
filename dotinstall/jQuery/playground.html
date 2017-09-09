@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>vanish button / jQuery</title>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+  <button id="btn">削除可能テキスト生成</button>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  $(function(){
+
+    // ボタンクリック で pタグ生成
+    $('#btn').click(function(){
+      var p = $('<p class="vanish">削除</p>');
+      $(this).before(p);
+    });
+
+    // p をクリック　で それを削除
+    $('.vanish').click(function(){
+      $(this).remove();
+    });
+    // これは動かない　-> 読み込み時に.vanish は存在しないから。
+
+    // p をクリック　で それを削除
+    $('body').on('click','.vanish',function(){
+      $(this).remove();
+    });    
+
+  });    
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

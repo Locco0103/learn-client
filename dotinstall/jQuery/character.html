@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>character judge</title>
+  <style type="text/css">
+    body{
+      text-align:center;
+      background-color:#efefef;
+    }
+  </style>
+</head>
+<body>
+  <h1>キャラクター診断</h1>
+  <p><input id="name" type="text" placeholder="名前入力"></p>
+  <p><button id="btn">Judge now!</button>
+  <p id="result">結果はここへ出力されます。</p>
+  <p id="twitter"></p>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+  // ボタンを押すと名前を取得し書きかわる機能
+
+  $("#btn").click(function(){
+    // 名前 取得
+    var name = $("#name").val();
+    // type 取得
+    var types = ["Mr.軸屋","Φ","ふなしー","simiraa","ロッコ"];
+    var type = types[ Math.floor(Math.random() * types.length) ];
+    // character 取得
+    var characters = ["むっつりな","けちな","クレイジーな","筋骨隆々な","涙もろい"];
+    var character = characters[ Math.floor(Math.random() * characters.length) ];
+    // 出力
+    var judgement = name + "よ、君は本物よりも少しだけ" + character + type + "タイプのようだ。";
+    $("#result").text(judgement);
+
+    // ツイッターボタンの出力
+    var twitterLink = $('<a href="https://twitter.com/intent/tweet?text=hello" target="_blank">ツイートする</a>');
+    $('#twitter').html(twitterLink);    
+  });
+
+
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

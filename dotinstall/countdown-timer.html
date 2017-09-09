@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>countdown timer</title>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+  <div id="timer">00:00.000</div>
+  <div class="container">
+    <button id="min">min</button>
+    <button id="sec">sec</button>
+    <button id="reset">reset</button>
+    <button id="start">start</button>
+  </div>
+<!--   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+  <script type="text/javascript">
+  // $(function(){
+    var timer = document.getElementById('timer');
+    var min = document.getElementById('min');
+    var sec = document.getElementById('sec');
+    var reset = document.getElementById('reset');
+    var start = document.getElementById('start');
+    var timerId;
+    var startTime;
+    var updateTimer;
+    var timeToCountDown = 0; 
+    var isRunning =false;
+    var timeLeft = 0;
+
+    function updateTimer(t){
+      var d = new Date(t);
+      var m = "0" + d.getMinutes(); // getMinutes(d) でないのはなぜ？
+      var s = "0" + d.getSeconds();
+      var ms = "00" + d.getMilliseconds();
+      m = m.slice(-2);
+      s = s.slice(-2);
+      ms = ms.slice(-3);
+      timer.textContent = m + ":" + s + "." + ms;
+    }
+
+    var countDown = function(){
+      timerId = setTimeout(function(){
+        timeLeft = timeToCountDown - (Date.now() - startTime);
+        if ( timeLeft < 0 ) {
+          isRunning = false;
+          start.textContent = 'start';
+          clearTimeout(timerId);
+          timeleft = 0;
+          timeToCountDown = 0;
+          updateTimer(timeToCountDown);
+          return;
+        } else {
+          updateTimer(timeLeft);
+          countDown();
+        }
+      }, 10);
+    };
+
+    // min 分数を1分増やす機能
+    min.addEventListener('click',function(){
+      if(isRunning) return;
+      timeToCountDown +=  60 * 1000;
+      updateTimer(timeToCountDown);
+    });
+
+    // sec 機能
+    sec.addEventListener('click',function(){
+      if(isRunning) return;
+      timeToCountDown += 1000;
+      updateTimer(timeToCountDown);
+    });
+
+    // start ボタン機能
+    start.addEventListener('click',function(){ 
+      if (!isRunning) {
+      isRunning = true;
+      start.textContent = 'stop';
+      startTime = Date.now();
+      countDown();
+
+      } else { // stop 機能
+      isRunning = false;
+      start.textContent = 'start';
+      timeToCountDown = timeLeft;
+      clearTimeout(timerId);
+      }
+    });
+
+
+    // リセット機能
+    reset.addEventListener('click',function(){
+      timeToCountDown = 0;
+      updateTimer(timeToCountDown);
+    });
+    // jQuery
+    // $('#start').on('click',function(){ 
+    //   $('#timer').html('12324');
+    // });    
+  // });
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

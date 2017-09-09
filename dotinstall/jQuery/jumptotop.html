@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Jump to top / jQuery</title>
+  <style type="text/css">
+    body{
+      text-align:center;
+      margin:0;
+      padding:0;
+    }
+    .jtt{
+      font-size:22px;
+      height:100vh;
+      background-color:gray;
+      color:white;
+    }
+    #count{
+      position:fixed;
+      bottom:5px;
+      left:5px;
+    }
+    #upTo{
+      position:fixed;
+      bottom:5px;
+      right:5px;
+    }    
+  </style>
+</head>
+<body>
+<div class="jtt">Jump to top</div>
+<p id="first">scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<p>scroll</p>
+<div id="count">Here, you can see how many you scrolled from the beggining.</div>
+<div id="upTo"><a href="#">go-up</a></div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+
+  $('#upTo').hide();
+
+  $(window).scroll(function(){
+    // どれくらいスクロールしているのかをチェックする
+    $('#count').text($(this).scrollTop());
+    // スクロールされたら表示を始める
+    if ( $(this).scrollTop() > 800 ){
+      $('#upTo').fadeIn();      
+    } else {
+      $('#upTo').fadeOut();
+    }
+  });
+
+  $('#upTo').click(function(){
+    $('body').animate({
+      scrollTop:0
+    },2000);
+    return;
+  });
+
+
+});
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
