@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>books donuts episode2-4 フォーム機能を使いこなそう</title>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/phi-jp/meltline/v0.0.9/meltline.css"> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!--   <p>メールアドレス：<input type="text" name="email"></p>
+  <button id="confirm">確認</button>
+  <button id="clear">クリア</button>
+  <div>
+    <select>
+      <option value="個人名">個人</option>
+      <option value="法人名">法人</option>
+    </select>
+  </div>
+  <p><span id="desc">個人名</span><input type="text" name="name"></p>
+ -->
+<form action="check.html" method="post">
+  <dl>
+<!--     <dt>お名前<em>(必須)</em></dt>
+    <dd><input type="text" name="name"></dd>
+    <dt>性別</dt>
+    <dd>
+      <input type="radio" name="gender" value="男性" id="gender_man">
+      <label for="gender_man">男性</label>
+      <input type="radio" name="gender" value="女性" id="gender_woman">
+      <label for="gender_woman">女性</label>
+    </dd> -->
+    <dt>年齢</dt>
+    <dd>
+      <select name="age">
+        <option>選択してください</option>
+        <option value="10代">10代</option>
+        <option value="20代">20代</option>
+        <option value="30代">30代</option>
+      </select>
+    </dd>
+    <p>好きなお酒は？<input type="text" name="sake"></p>
+    <!-- <dt>得意言語</dt> -->
+<!--     <dd>
+      <input type="checkbox" name="language" value="html" id="html">
+      <label for="html">html</label>
+      <input type="checkbox" name="language" value="css" id="css">
+      <label for="css">css</label>
+      <input type="checkbox" name="language" value="javascript" id="javascript">
+      <label for="javascript">javascript</label>
+    </dd> -->
+<!--     <dt>コメント</dt>
+    <dd><textarea></textarea></dd>
+    <button type="submit">送信</button> -->
+  </dl>
+</form>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javaScript" src="js/main2-4.js"></script>
+</body>
+</html>

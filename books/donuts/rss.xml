@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>to-R</title>
+    <link>http://blog.###</link>
+    <lastBuildData>Fri, 09 Nov ... </lastBuildData>
+    <item>
+      <title>タイトル１</title>
+      <pubDate>公開日１</pubDate>
+      <link>リンク１</link>
+      <description>ディスクリプション１</description>
+    </item>
+    <item>
+      <title>タイトル２</title>
+      <pubDate>公開日２</pubDate>
+      <link>リンク２</link>
+      <description>ディスクリプション２</description>
+    </item>
+    <item>
+      <title>タイトル３</title>
+      <pubDate>公開日３</pubDate>
+      <link>リンク３</link>
+      <description>ディスクリプション３</description>
+    </item>
+  </channel>
+</rss>
