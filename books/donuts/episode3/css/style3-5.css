@@ -1,0 +1,23 @@
+body{
+  background:#cdcdcd;
+  color:white;
+}
+
+a{
+  text-decoration:none;
+}
+
+p{
+  width:800px;
+  margin:0 auto;
+  text-indent:1em;
+}
+
+.tooltip{
+  background:yellow;
+  color:#888;
+  line-height:1.5;
+  font-size:small;
+  width:260px;
+  padding:1em;
+}

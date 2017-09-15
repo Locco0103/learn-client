@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>books donuts episode3-2</title>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/phi-jp/meltline/v0.0.9/meltline.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      border:0;
+    }
+    body{
+      background-color:black;
+    }
+    #container{
+      width:1000px;
+      margin:20px auto;
+    }
+    #nav{
+      width:300px;
+      float:left;
+      overflow:hidden;
+    }
+    #nav .pageWrap{
+      width:900px;
+    }
+    #nav .pageWrap .page{
+      width:300px;
+      float:left;
+      text-align:center;
+    }
+    #nav p{
+      clear:both;
+      width:300px;
+      padding:10px 0;
+      text-align:center;
+    }
+    #nav button{
+      padding:10px;
+    }
+    #nav ul{
+      height:460px;
+      list-style-type: none;
+    } 
+    #nav ul li{
+      list-style-type:none;
+      width:150px;
+      float:left;
+    }
+    #nav ul li img{
+      border:3px solid white;
+      width:140px;
+      height:150px;
+      object-fit:cover;
+    }
+    #main{
+      width:650px;
+      float:right;
+    }
+    #main{
+      border:3px solid white;
+    }
+    #main img{
+      width:640px;
+      height:460px;
+      object-fit:cover;
+      position:absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <div class="pageWrap">
+        <div class="page">
+          <ul>
+            <li>
+              <a href="images/photo1.jpg">
+                <img src="images/photo1.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo2.jpg">
+                <img src="images/photo2.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo3.jpg">
+                <img src="images/photo3.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo4.jpg">
+                <img src="images/photo4.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo5.jpg">
+                <img src="images/photo5.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo6.jpg">
+                <img src="images/photo6.jpg">
+              </a>
+            </li>
+          </ul>
+          <button class="next">次へ</button>
+        </div>
+
+        <div class="page">
+          <ul>
+            <li>
+              <a href="images/photo1.jpg">
+                <img src="images/photo1.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo3.jpg">
+                <img src="images/photo3.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo4.jpg">
+                <img src="images/photo4.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo5.jpg">
+                <img src="images/photo5.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo6.jpg">
+                <img src="images/photo6.jpg">
+              </a>
+            </li>
+          </ul>
+          <button class="previous">前へ</button>
+          <button class="next">次へ</button>
+        </div>
+
+        <div class="page">
+          <ul>
+            <li>
+              <a href="images/photo1.jpg">
+                <img src="images/photo1.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo2.jpg">
+                <img src="images/photo2.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo3.jpg">
+                <img src="images/photo3.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo4.jpg">
+                <img src="images/photo4.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/photo5.jpg">
+                <img src="images/photo5.jpg">
+              </a>
+            </li>
+          </ul>
+          <button class="previous">前へ</button>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <img src="images/photo1.jpg">
+    </div>
+  </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javaScript" src="js/main3-2.js"></script>
+</body>
+</html>
+

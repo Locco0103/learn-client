@@ -1,0 +1,43 @@
+#container{
+  width:400px;
+  margin:0 auto;
+}
+
+ul{
+  list-style-type:none;
+  padding:0;
+}
+
+#tab{
+  background:pink;
+  display:flex;
+  margin-bottom:0;
+}
+
+#tab li{
+  width:100px;
+  color:white;
+  text-align:center;
+  border:1px solid black;
+  box-sizing:border-box;
+}
+
+#tab li a{
+  display:block;
+  text-decoration:none;
+  padding:20px 0;
+}
+
+#panel{
+  border:1px solid #333;
+  margin-top:0;
+}
+
+#panel li{
+  word-break:break-word;
+  padding:20px;
+}
+
+.selected{
+  background:yellow;
+}
