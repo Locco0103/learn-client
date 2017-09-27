@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>books donuts episode3-10</title>
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/phi-jp/meltline/v0.0.9/meltline.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="css/style3-10.css">
+</head>
+<body>
+<h1>お問い合わせ</h1>
+<form action="#" method="post">
+  <dl>
+    <dt>お名前<span>※</span></dt>
+    <dd><input type="text" name="name" class="validate required" size="80"></dd>
+    <dt>フリガナ</dt>
+    <dd><input type="text" name="furi" class="validate" size="80"></dd>
+    <dt>郵便番号</dt>
+    <dd>
+      <input type="text" name="zip1" size="3" maxlength="3" class="validate number">
+      -
+      <input type="text" name="zip2" size="4" maxlength="4" class="validate number">
+    </dd>
+    <dt>メールアドレス</dt>
+    <dd><input type="text" name="mail" class="validate mail" size="80"></dd>
+    <dt>メールアドレス（確認用）</dt>
+    <dd><input type="text" name="mail_check" class="validate mail_check" size="80"></dd>
+    <dt>性別<span>※</span></dt>
+    <dd>
+      <input type="radio" name="gender" id="man" class="validate required"><label for="man">男性</label>
+      <input type="radio" name="gender" id="woman"><label for="woman">女性</label>
+    </dd>
+    <dt>サイトを知ったきっかけ<span>※</span></dt>
+    <dd class="checkboxRequired">
+      <input type="checkbox" name="search" id="search"><label for="search">検索エンジン</label>
+      <input type="checkbox" name="friend" id="friend"><label for="friend">知人より</label>
+      <input type="checkbox" name="mail_magazine" id="mail_magazine"><label for="mail_magazine">メルマガ</label>
+      <input type="checkbox" name="other" id="other" class="validate add_text"><label for="other">その他</label>
+      <input type="text" name="other_text" value="">
+    </dd>
+    <dt>お問い合わせ内容<span>※</span></dt>
+    <dd>
+      <textarea id="inquiry" name="inquiry" rows="10" cols="60" class="validate required"></textarea>
+  </dl>
+  <p><input type="submit" value="submit"></p>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javaScript" src="js/main3-10.js"></script>
+</body>
+</html>
+

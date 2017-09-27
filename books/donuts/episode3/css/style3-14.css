@@ -1,0 +1,23 @@
+ul{
+  padding:0;
+}
+
+li{
+  list-style-type:none;
+  float:left;
+}
+
+img{
+  width:360px;
+  height:360px;
+  object-fit:cover;
+}
+
+#slide{
+  width:10000px;
+}
+
+#slideGallary{
+  width:360px;
+  overflow:hidden;
+}

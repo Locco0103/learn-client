@@ -1,0 +1,12 @@
+span{
+  color:red;
+  font-size:10px;
+}
+
+dd.error input,dd.error label,dd.error textarea{
+  background:pink;
+}
+
+p.error{
+  color:red;
+}
