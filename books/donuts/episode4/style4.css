@@ -1,0 +1,41 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+
+div{
+  width:100vw;
+  height:200px;
+  position:fixed;
+  /*background-attachment:fixed;*/
+}
+
+h2{
+  text-align:center;
+  margin:0;
+  color:white;
+}
+
+/*.content01{
+  background: url(images/photo9.jpg);
+  background-size:cover;
+  top:0;
+}
+
+.content02{
+  background: url(images/photo10.jpg);
+  background-size:cover;
+  top:200px;
+}
+
+.content03{
+  background: url(images/photo11.jpg);
+  background-size:cover;
+  top:400px;
+}
+
+.content04{
+  background: url(images/photo12.jpg);
+  background-size:cover;
+  top:600px;
+}*/
