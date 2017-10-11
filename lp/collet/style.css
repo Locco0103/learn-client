@@ -1,0 +1,177 @@
+li{
+  list-style-type:none;
+  transition:500ms;
+}
+
+li:hover{
+  opacity:0.7;
+}
+
+.hover-opacity{
+  transition:500ms;
+}
+
+.hover-opacity:hover{
+  opacity:0.7;
+}
+
+.top-background{
+  background:url(images/bg-main.png) no-repeat;
+  background-size:cover;
+  background-position:center center;
+}
+
+.interview-background{
+  background:url(images/interview.jpg);
+  background-size:cover;
+  z-index:1;
+}
+
+.linear-gradient{
+  padding:0;
+  margin:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,1));
+}
+
+.border-bottom-brown{
+  background-color:rgb(197, 186, 147);
+  width:55px;
+  height:4px;
+}
+
+.blur{
+  position:relative;
+  overflow:hidden;
+}
+
+.blur::before{
+  content:'';
+  position:absolute;
+  top:-5px;
+  left:-5px;
+  right:-5px;
+  bottom:-5px;
+  background:inherit;
+  filter:blur(5px);
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.text-middle{
+  vertical-align:middle;
+}
+
+.w720{
+  width:720px;
+}
+
+.w970{
+  width:970px;
+}
+
+.h110{
+  height:110px;
+}
+
+.h570{
+  height:570px;
+}
+
+.pt110{
+  padding-top:110px;
+}
+
+.pb142{
+  padding-bottom:142px;
+}
+
+.color-1{
+  color:rgb(197, 186, 147);
+}
+
+.color-2{
+  color:#aaa;
+}
+
+.color-3{
+  color:#ddd;
+}
+
+.bg-1{
+  background-color:rgb(197, 186, 147);
+}
+
+.bg-2{
+  background-color:hsl(0, 0%, 96%);
+}
+
+.bg-3{
+  background-color:#f8f8f8;
+}
+
+.bg-4{
+  background-color:#f5f5f5;
+}
+
+.bg-5{
+  background-color:#f2f2f2;
+}
+
+.border-gray{
+  border:1px solid #dedede;
+}
+
+.ls1em{
+  letter-spacing:0.1em;
+}
+
+.ls2em{
+  letter-spacing:0.2em;
+}
+
+.ls3em{
+  letter-spacing:0.3em;
+}
+
+.lh26{
+  line-height:2.6;
+}
+
+.mt200{
+  margin-top:280px;
+}
+
+.my-box-shadow{
+  box-shadow:2px 2px 6px #aaa;
+}
+
+.my-box-shadow2{
+  box-shadow:2px 2px 24px #ccc;
+}
+
+.style-italic{
+  font-style:italic;
+}
+
+.font-family1{
+  font-family: 'Hiragino Kaku Gothic Pro W3', 'HiraKakuPro-W3', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'Ubuntu', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.font-family2{
+  font-family:  'YuMincho';
+}
+
+input[type="text"]:focus{
+  outline:0;
+  border:1px solid #000;
+}
+
+.scroll-fixed{
+  height:50px;
+  box-shadow:0px 0px 20px #aaa;
+  transition:500ms ease-in-out;
+}
