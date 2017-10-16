@@ -130,9 +130,15 @@ $(function(){
     }
   }
 // 文字列を複数使って、アラート表示させよう
-  var str2 = "I am";
-  var str3 = " starving";
-  alert( str2 + str3 );
+  // var str2 = "I am";
+  // var str3 = " starving";
+  // alert( str2 + str3 );
+
+$("span").fadeIn(1000,function(){
+  $(this).css("color","#f00");
+});
+
+
 }); 
 
 
