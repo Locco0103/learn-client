@@ -1,0 +1,15 @@
+li:hover{
+  opacity:0.8;
+}
+
+.lst-none{
+  list-style-type:none;
+}
+
+.border-top-radius{
+  border-radius:10px 10px 0px 0px;
+}
+
+.border-bottom-radius{
+  border-radius:0px 0px 10px 10px;
+}

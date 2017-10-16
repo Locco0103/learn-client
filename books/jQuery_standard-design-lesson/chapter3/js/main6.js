@@ -1,0 +1,9 @@
+$(function(){
+  $("#alert").hide();
+  $("#createAlert").click(function(){
+    $("#alert").fadeIn(300);
+  });
+  $("#deleteAlert").click(function(){
+    $("#alert").fadeOut(300);
+  });
+});
