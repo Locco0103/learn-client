@@ -1,0 +1,109 @@
+html, body{
+  font-family:"游ゴシック",YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+}
+
+li{
+  list-style-type:none;
+}
+
+.background-img1{
+  background-image: url("images/slide1.jpg");
+  background-size:cover;
+  z-index:-99;
+}
+
+.background-img2{
+  background-image: url("images/slide2.jpg");
+  background-size:cover;
+  z-index:-99;
+}
+
+.bg-menu-img1{
+  background-image: url("images/menu.png");
+  background-size:cover;
+}
+
+.bg-menu-img1:hover{
+  background-image: url("images/menu-hover.png");
+}
+
+.bg-anchor-img1{
+  background-image: url("images/anchor-point.jpg");
+  background-size:cover;
+}
+.bg-anchor-img1:hover{
+  background-image: url("images/point-img.jpg");
+  background-size:cover;
+}
+.bg-anchor-img2{
+  background-image: url("images/anchor-introduction.jpg");
+  background-size:cover;
+}
+.bg-anchor-img2:hover{
+  background-image: url("images/anchor-introduction-hover.jpg");
+  background-size:cover;
+}
+.bg-anchor-img3{
+  background-image: url("images/anchor-caster.jpg");
+  background-size:cover;
+}
+.bg-anchor-img3:hover{
+  background-image: url("images/caster-img.jpg");
+  background-size:cover;
+}
+
+.white-hover:hover{
+  color:white;
+}
+
+.color1{
+  color: hsl(3, 81%, 62%);
+}
+
+.bg-color1{
+  background-color: hsl(3, 81%, 62%);
+}
+
+.bg-color1-hover:hover{
+  background-color: hsl(3, 81%, 62%) !important;
+}
+
+.bg-color2-hover:hover{
+  background-color: #f8918a;
+}
+
+.border1{
+  border:4px solid hsl(3, 81%, 62%);
+}
+
+.border2{
+  border:2px solid hsl(3, 81%, 62%);
+}
+
+.bg-color2{
+  background-color:hsla(0, 100%, 100%, 0.7);
+}
+
+.bg-color3{
+  background-color: #f2efec;
+}
+
+.w110{
+  width:110px;
+}
+
+.w320{
+  width:320px;
+}
+
+.wcalc{
+  width:calc(100% / 3);
+}
+
+.h260{
+  height:260px;
+}
+
+.z-index99{
+  z-index: 99;
+}
