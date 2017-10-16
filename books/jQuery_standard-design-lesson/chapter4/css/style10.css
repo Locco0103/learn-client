@@ -1,0 +1,8 @@
+li{
+  list-style-type: none;
+}
+
+.px150 {
+  padding-left: 150px !important;
+  padding-right: 150px !important;
+}

@@ -1,0 +1,40 @@
+img{
+  width:100px;
+  height:100px;
+  object-fit: cover;
+  cursor:pointer;
+}
+
+.bg-orange{
+  background:orange;
+}
+
+.w600{
+  width:600px;
+}
+
+.bg-opacity-black{
+  background: rgba(0,0,0,0.7);
+}
+
+/*本*/
+
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.7);
+}
+
+#photo{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  width:640px;
+  height:420px;
+}
