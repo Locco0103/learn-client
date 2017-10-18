@@ -10,8 +10,14 @@
 <body>
 
   <header>
-    <div id="ham" class="fixed r0 w60 h60 bg-menu-img1 z-index99"></div>
-    <nav id="menu" class="fixed t0 r0 b0 w320 bg-color2 border1 px30 py20">
+    <!-- ハンバーガーメニューパターン1 -->
+    <div id="ham" class="hide fixed r0 w60 h60 z-index100">
+      <img src="images/menu.png" class="w100per h100per">
+    </div>
+    <!-- ハンバーガーメニューパターン2 -->
+    <div id="ham2" class="fixed r0 w60 h60 z-index100 bg-menu1"></div>
+
+    <nav id="menu" class="fixed t0 r0 b0 w320 bg-color2 border1 px30 py20 z-index90">
       <ul class="mt40">
         <li class="py5"><a href="#" class="color1 bold fs20">ホーム</a></li>
         <li class="py5"><a href="#anchor" class="color1 bold fs20">３つのポイント</a></li>
@@ -29,8 +35,8 @@
     </nav>
   </header>
   <section id="top" class="h100vh">
-    <div id="backtop" class="absolute t0 l0 r0 b0 background-img1">
-      <div id="fornttop" class="absolute t0 l0 r0 b0 background-img2"></div>
+    <div id="backTop" class="absolute t0 l0 r0 b0 bg-img1">
+      <div id="frontTop" class="absolute t0 l0 r0 b0 bg-img4 opacity-0"></div>
     </div>
     <div id="topContents" class="white text-center pt80">
       <div class="fs13">デザイナー・エンジニアのフレキシブルな働き方ができる仕事紹介</div>
@@ -78,74 +84,74 @@
     </div>
   </section>
 
-  <section id="content1">
-    <div class="w50per">
-      <img src="images/point-img.jpg">
+  <section id="content1" class="f h550">
+    <div class="w50per h100per">
+      <img src="images/point-img.jpg" class="w100per h100per object-position-right">
     </div>
-    <div class="w50per pl50">
-      <h2>週２日から可能な案件を専任。</h2>
-      <div class="border2 w110"></div>
-      <p>
-        現業や、他の案件を受けながらでももちろん大丈夫。
+    <div class="w50per h100per pl100 pr80 pt130">
+      <h2 class="fs26">週２日から可能な案件を専任。</h2>
+      <div class="border2 w80"></div>
+      <p class="fs14 bold mt15">
+        現業や、他の案件を受けながらでももちろん大丈夫。<br>
         契約期間は２か月からなので安定収入を実現します。
       </p>
-      <p>
-        下請け業務は一切なし。直接案件なので高い報酬をお約束します。
+      <p class="fs14 bold mt10">
+        下請け業務は一切なし。直接案件なので高い報酬をお約束します。<br>
         また、フリーランスに興味はあるけれど、毎月の収入が不安、という会社員の方も、定期的な収入先を確保することで安心して独立することができます。
       </p>
     </div>
   </section>
 
-  <section id="content2">
-    <div id="wrap">
-      <h2>働き方はフレキシブル。自宅でも働けます。</h2>
-      <div class="border2 w110"></div>
-      <div>
-        Remote Style でご紹介する案件は常駐スタイルだけではなく、作業は自宅からでも可能というものが数多くあります。
+  <section id="content2" class="bg-color3 px50 pt60 pb80">
+    <div id="wrap" class="w1000 mx-auto">
+      <h2 class="fs30">働き方はフレキシブル。自宅でも働けます。</h2>
+      <div class="border2 w80"></div>
+      <div class="mt13 mb30 lh16 fs14 bold">
+        Remote Style でご紹介する案件は常駐スタイルだけではなく、作業は自宅からでも可能というものが数多くあります。<br>
         リモートワークだけでは無く、時短、複業も。あなたに合わせた仕事スタイルが可能です。
       </div>
       <div class="f f-between">
-        <div class="text-center">
-          <img src="images/introduction01.jpg">
-          <div class="color1 text-center">自宅で</div>
-          <div>
+        <div class="text-center wcalc lh16 pr10">
+          <img src="images/introduction01.jpg" class="circle w200 h200">
+          <div class="color1 text-center bold mt20 mb5">自宅で</div>
+          <div class="fs12 bold text-left">
             通勤が苦手な人も、MTGを最小限にとどめて、自宅で仕事することが可能なので、自分だけのワークスタイルを構築することができます。
           </div>
         </div>
-        <div class="text-center">
-          <img src="images/introduction02.jpg">
-          <div class="color1 text-center">地方で</div>
-          <div>
+        <div class="text-center wcalc lh16 pl10 pr10">
+          <img src="images/introduction02.jpg" class="circle w200 h200">
+          <div class="color1 text-center bold mt20 mb5">地方で</div>
+          <div class="fs12 bold text-left">
             地方で暮らしたいけれで仕事がない…という方も、Remote Style なら好きなデザインやプログラムの仕事を続けられます。
           </div>
         </div>
-        <div class="text-center">
-          <img src="images/introduction03.jpg">
-          <div class="color1 text-center">海外で</div>
-          <div>
+        <div class="text-center wcalc lh16 pl10">
+          <img src="images/introduction03.jpg" class="circle w200 h200 object-position-bottom">
+          <div class="color1 text-center bold mt20 mb5">海外で</div>
+          <div class="fs12 bold text-left">
             海外に行ってみたいけれど、いきなり現地企業で働くはハードルが高いもの。日本の仕事をリモートで行えばまずは気になっていた国に住んでみることも可能です。
           </div>
         </div>
       </div>
-      <div class="background-white">
-        <div>利用者の声</div>
+      <div class="bg-white mt30 pt20 pb30 px30">
+        <div class="fs14 bold">利用者の声</div>
         <div class="f f-between">
-          <div id="ogawa" class="w50per">
-            <img src="images/ogawa.jpg">
-            <div>
-              <div>
+          <div id="ogawa" class="w50per f mt5">
+            <img src="images/ogawa.jpg" class="w100 h100 circle">
+            <div class="px20">
+              <div class="fs13 bold lh16">
                 好きなことを本業に、リモートでも信頼してくださる職場、日本に仕事を持ち海外でも働ける。自由で平和な理想の働き方が実現できています。
               </div>
-              <div>小川さん(Webデザイナー)</div>
+              <div class="fs13 bold text-right">小川さん(Webデザイナー)</div>
             </div>
           </div>
-          <div id="koutou" class="w50per">
-            <img src="images/koutou.jpg">
-            <div>
-              <div>
+          <div id="koutou" class="w50per f mt5">
+            <img src="images/koutou.jpg" class="w100 h100 circle">
+            <div class="px20">
+              <div class="fs13 bold lh16">
                 常駐とリモートの組み合わせで、しかも開いてあるリソースが限られる中、案件を紹介してもらえるのはとてもたすからです。
               </div>
-              <div>功刀さん(ディレクター)</div>
+              <div class="fs13 bold text-right">功刀さん(ディレクター)</div>
             </div>
           </div>
         </div>
@@ -154,10 +160,267 @@
   </section>
 
 <!-- content1と同じ -->
-  <section id="content3" class="f">
+  <section id="content3" class="f h550">
+    <div class="w50per h100per bg-contents3 f fh">
+      <img src="images/caster01.jpg" class="circle w300 h300">
+    </div>
+    <div class="w50per h100per pl100 pr80 pt70">
+      <h2 class="fs26 lh14">オンライン秘書がつくから、<br>本業に集中できます。</h2>
+      <div class="border2 w80 mt5 ml4"></div>
+      <p class="fs14 bold mt15">
+        フリーランスになってから、雑務が増えてお困りではないですか？Remote Style 経由でお仕事を受注した方は、特典としてオンラインアシスタント<br>
+        「<a href="#" class="color1 text-underline">CasterBiz</a>」のサービスが無料で受けられます。
+      </p>
+      <p class="mt20">
+        <ul class="fs14 bold">
+          <li class="disc lh18">請求書作成/発行</li>
+          <li class="disc lh18">経費の相談から対応</li>
+          <li class="disc lh18">スケジュール管理</li>
+          <li class="disc lh18">メール対応</li>
+          <li class="disc lh18">その他リサーチなど</li>
+        </ul>
+      </p>
+      <p class="mt20 fs10 lh16 bold">
+        ※　無料枠は１０時間分 /月 になります。<br>
+        ※　時間枠内であればRemote Style以外の業務のサポートでもお使いいただけます。
+      </p>
+    </div>
   </section>
 
+  <section id="case" class="bg-color3 pb30">
+    <div class="text-center pt80 mb15">
+      <h2 class="fs20">希望に合った案件を探せます</h2>
+      <div class="border2 w110 mx-auto mt10"></div>
+    </div>
 
+    <div id="caseContent" class="f flex-around mb30 w1000 mx-auto">
+      <div id="caseContent1" class="w30per">
+        <div class="bg-color4 text-center py10 border3">
+          <img src="images/case01.png" class="w70 h70 mb10">
+          <p class="bold lh16 fs14">
+            Webデザイナー<br>
+            急成長企業でメディアの<br>
+            PCおよびSPサイトのデザイン
+          </p>
+        </div>
+        <div class="bg-white border3 border-top-none px15 py30 fs12">
+          <div class="f flex-wrap flex-between">
+            <div class="w30per">
+              <p class="border4 bold px5">月額</p>
+            </div>
+            <p class="w60per">〜55万</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">稼働日数</p>
+            </div>
+            <p class="w60per">週3〜</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">必要スキル</p>
+            </div>
+            <p class="w60per lh10">HTML/CSSでのフロントエンド＆コーディングスキル<br>Illustratorを用いたDTPデザインのご経験</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">勤務地</p>
+            </div>
+            <p class="w60per">渋谷</p>
+          </div>
+        </div>
+      </div>
+      <div id="caseContent2" class="w30per">
+        <div class="bg-color4 text-center py10 border3">
+          <img src="images/case01.png" class="w70 h70 mb10">
+          <p class="bold lh16 fs14">
+            UI/UXデザイナー<br>
+            新規メディアのUI設計から<br>
+            フロントの実装まで
+          </p>
+        </div>
+        <div class="bg-white border3 border-top-none px15 py30 fs12">
+          <div class="f flex-wrap flex-between">
+            <div class="w30per">
+              <p class="border4 bold px5">月額</p>
+            </div>
+            <p class="w60per">〜50万</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">稼働日数</p>
+            </div>
+            <p class="w60per">週3日</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">必要スキル</p>
+            </div>
+            <p class="w60per lh10">WebサービスのUI/UXデザインの経験がある方<br>Android、スマホサイトの経験んのある方</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">勤務地</p>
+            </div>
+            <p class="w60per lh10">新宿三丁目（スキルによってリモート可）</p>
+          </div>
+        </div>
+      </div>
+      <div id="caseContent3" class="w30per">
+        <div class="bg-color5 text-center py10 border3">
+          <img src="images/case02.png" class="w70 h70 mb10">
+          <p class="bold lh16 fs14">
+            エンジニア<br>
+            事業会社でスマホアプリの<br>
+            内部設計・コードレビュー
+          </p>
+        </div>
+        <div class="bg-white border3 border-top-none px15 py30 fs12">
+          <div class="f flex-wrap flex-between">
+            <div class="w30per">
+              <p class="border4 bold px5">月額</p>
+            </div>
+            <p class="w60per">〜65万</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">稼働日数</p>
+            </div>
+            <p class="w60per">週5日</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">必要スキル</p>
+            </div>
+            <p class="w60per lh10">iOSまたはAndroidのネイティブ実装経験<br>クライアントコミュニケーションの経験</p>
+          </div>
+          <div class="f flex-wrap flex-between mt15">
+            <div class="w30per">
+              <p class="border4 bold px5">勤務地</p>
+            </div>
+            <p class="w60per lh10">中目黒（スキルによってリモート可）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="fs14 bold mb20">非公開案件も多数ございます。会員登録後、ご紹介いたします。</p>
+      <img src="images/arrow.png" class="w100">
+    </div>
+  </section>
+
+  <section id="signUp" class="f h450">
+    <div class="w50per h100per px100 pt60 bg-color1 white">
+      <h2 class="fs20 lh14"><br>サービス利用の流れ</h2>
+      <div class="border5 w110 mt13"></div>
+      <div class="mt23">
+        <div class="ml4">
+          <span class="inline-block w35 h35 bg-white color1 text-center bold">1</span>
+          <span class="fs15 black bold pl10">Webで無料登録</span>
+        </div>
+        <div class="ml4 mt10">
+          <span class="inline-block w35 h35 bg-white color1 text-center bold">2</span>
+          <span class="fs15 black bold pl10">Skypeで、ご希望やご経歴についてヒアリング</span>
+        </div>
+        <div class="ml4 mt10 f">
+          <span class="inline-block w35 h35 bg-white color1 text-center bold">3</span>
+          <p class="mt8">
+            <span class="fs15 black bold pl15 lh16">案件のご紹介<br></span>
+            <span class="fs10 black bold ml15 lh16">※お持ちのスキル等によって、案件がご紹介できない場合もございます。</span>
+          </p>
+        </div>
+        <div class="ml4 mt10">
+          <span class="inline-block w35 h35 bg-white color1 text-center bold">4</span>
+          <span class="fs15 black bold pl10">クライアントとのご面談</span>
+        </div>
+        <div class="ml4 mt10">
+          <span class="inline-block w35 h35 bg-white color1 text-center bold">5</span>
+          <span class="fs15 black bold pl10">ご契約後、業務開始</span>
+        </div>
+      </div>
+    </div>
+    <div class="w50per h100per bg-sineup f fh">
+      <div>
+        <p class="white text-center bold">＼１分で完了／</p>
+        <div class="button bg-color1 bg-color2-hover mt3 p0">
+          <a href="#" class="inline-block white px20 py12 fs16">
+            新規登録（無料）
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="review" class="bg-color3 pb30 f fc">
+    <div id="wrapper" class="w1000">
+      <div class="text-center pt70 mb20">
+        <h2 class="fs20">企業の声</h2>
+        <div class="border2 w110 mx-auto mt10"></div>
+      </div>
+      <div class="w100per f fc mb100">
+        <div class="w50per text-center pl70 pr50">
+          <img src="images/chatwork.jpg" class="circle object-fit-cover w200">
+          <div class="text-center">
+            <p class="color1 bold fs20 mt20 lh14">ChartWork株式会社</p>
+            <p class="color1 bold fs14">大出裕介様、河野智英子様</p>
+          </div> 
+          <div class="text-left fs12 lh16 mt30">
+            <p>
+              リモートだから距離的には近くにいないんですけど、こんなふうに困った時にはいつでも頼れるので、「すぐ側にいてくれる」安心感があります。
+            </p>
+            <p>
+              だから「なにかあったらまず相談してみよう」と思い浮かんで、つながっているだけで本当にホッとしますね！
+            </p>
+          </div>
+        </div>
+        <div class="w50per text-center pr70 pl50">
+          <img src="images/wilby-ceo.png" class="circle object-fit-cover w200">
+          <div class="text-center">
+            <p class="color1 bold fs20 mt20 lh14">株式会社WILBY</p>
+            <p class="color1 bold fs14">Co-Founder&amp;CEO千田弘和様</p>
+          </div> 
+          <div class="text-left fs12 lh16 mt30">
+            <p>
+              案件が増えたタイミングで相談をしたら、弊社が求める方をスピーディーに紹介して頂きました。事前にしっかりと面談もできていたのでリモートでも安心してお仕事を任せることができました。
+            </p>
+            <p>
+              週２日ですが、状況に応じて調整できるのも魅力です。
+            </p>
+          </div>
+        </div>        
+      </div>
+      <div class="text-center pt50 mb20">
+        <h2 class="fs20">利用企業</h2>
+        <div class="border2 w110 mx-auto mt10"></div>
+      </div>
+      <div class="f flex-between flex-wrap mb80">
+        <img src="images/finc.png">
+        <img src="images/luxa.png">
+        <img src="images/plaid.png">
+        <img src="images/sms.png">
+        <img src="images/wilby.png">
+        <img src="images/residence.png">
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white pt50 pb30">
+    <div class="w300 mx-auto">
+      <img src="images/footer-logo.png" class="w100per">
+      <ul class="f flex-between fs14 bold mt10">
+        <li><a href="#" alt="company">会社概要</a></li>
+        <li><a href="#" alt="privacy-policy">プライバシーポリシー</a></li>
+        <li><a href="#" alt="rule">利用規約</a></li>
+      </ul>
+      <p class="text-center fs12 bold ls8">
+        &copy;Caster, Inc. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <div id="toTop" class="fixed b0 r0 mb20 mr20 z-index80 hover-opacity5">
+    <img src="images/pagetop.png">
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javaScript" src="main.js"></script>
