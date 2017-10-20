@@ -71,27 +71,21 @@ $(function(){
   // 条件分岐 x > 4 になったら x = 1 に戻る
 
   // もともとbackTop にあったものをフロントに持ってきて fadeOut させる
-  var x = 1;
-  var y = 2;
-  setInterval(function(){
+  var x = 0;
+  var max = 4;
+  var crossFade = function(){
     $("#backTop").css({
-      "background-image":"url('images/slide" + y + ".jpg')"
+      "background-image":"url('images/slide" + ((x + 1) % max) + ".jpg')"
     });
     $("#frontTop").css({
       "opacity":"1",
-      "background-image":"url('images/slide" + x + ".jpg')"
+      "background-image":"url('images/slide" + (x % max) + ".jpg')"
     }).stop().animate({
       "opacity":"0"
     },1000);
     x++;
-    y++;
-    if( x > 4 ){ 
-      x = 1;
-    }
-    if( y > 4 ){
-      y = 1;
-    }
-  },3000);
+  };
+  setInterval(crossFade ,2500);
   // 初期値
   // backTop 2
   // frontTop 1 opacity 0
