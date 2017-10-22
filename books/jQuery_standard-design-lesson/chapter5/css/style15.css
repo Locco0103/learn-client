@@ -1,0 +1,13 @@
+.s-fs{
+  font-size: 0.8em;
+}
+.m-fs{
+  font-size: 1em;
+}
+.l-fs{
+  font-size: 1.2em;
+}
+.active{
+  background-color: gray !important;
+  color: white !important;
+}

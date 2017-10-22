@@ -1,0 +1,26 @@
+li{
+  list-style-type: none;
+}
+
+.triangle{
+  width:0px;
+  border-top:18px solid #fff;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+}
+
+.color1{
+  color: #E86278;
+}
+
+.bg-color1{
+  background-color: #E86278;
+}
+
+.color2{
+  color: hsl(48, 89%, 60%);
+}
+
+.bg-color2{
+  background-color: hsl(48, 89%, 60%);
+}

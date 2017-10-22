@@ -1,0 +1,43 @@
+.float-left{
+  float: left;
+}
+
+.w700{
+  width: 700px;
+}
+
+.w2800{
+  width:2800px;
+}
+
+/*.ml-700{
+  margin-left: -700px;
+}*/
+
+.list-style-none{
+  list-style-type: none;
+}
+
+.bg-dimgray:hover {
+  background-color: white !important;
+}
+
+#bg{
+  background: url("../../images/bg.png") 0 100% repeat-x;
+  height:100vh;
+  transition: background 500ms;
+}
+#bg1{
+  background: url("../../images/bg1.png") 0 100% repeat-x;
+  height:100%;
+  transition: background 500ms;
+}
+#bg2{
+  background: url("../../images/bg2.png") 0 100% repeat-x;
+  height:100%;
+  transition: background 500ms;
+}
+
+.active{
+  background-color: gray !important;
+}

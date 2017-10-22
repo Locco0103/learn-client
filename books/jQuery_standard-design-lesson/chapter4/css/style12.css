@@ -1,0 +1,12 @@
+li{
+  list-style-type:none;
+}
+
+.bg-1{
+  background-color: hsla(180, 50%, 50%, 0.8);
+}
+
+.padding15{
+  padding:15px;
+}
+
