@@ -95,6 +95,41 @@ $(function(){
   // 透明度変更
   // backTop 3
   // frontTop 2 opacity 0
+// 4. ページ内リンクをスムーズスクロールへ
+  $('a[href^="#"]').click(function(e){
+    // スクロールしてもURL 変更されない
+    e.preventDefault();
+    // 目的地の取得
+    var des = $(this).attr("href");
+    // 少しだけ上にスクロールされると見やすい
+    var offsetY = -10;
+    // href='#' なら何もしない
+    if ( des == '#' ){
+      return false;
+    }
+    // 目的地の高さ offset().top
+    var offset = $(des).offset().top + offsetY;
+
+    $("html, body").animate({
+      "scroll-top": offset
+    },500,'swing');
+
+    // リンクへ移動しない
+    return false;
+  });
+  // #後の値の取得
+  console.log(location.hash);
 });
 
-  // 4. ページ内リンクをスムーズスクロールへ
+
+
+
+
+
+
+
+
+
+
+
+
