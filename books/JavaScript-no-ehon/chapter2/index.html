@@ -6,20 +6,23 @@
   <title>chapter2</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/phi-jp/meltline/v0.1.0/meltline.css">
+<!-- html 上に onclick 属性などを使用する場合、このメタタグを書く -->
   <meta http-equiv="Content-Script-Type" content="text/javascript">
+
 </head>
-<body>
+　　
+<!-- ステータスバーにテキストを挿入しよう -->
+<body onload="window.defaultStatus = '色の設定'">
   Let's JavaScript!<br>
 
 <!-- HTML の属性で 警告ダイアログを表示させてみよう(マウスが乗っかった時) -->
   <a onmouseover="alert('foo!')">mouseover</a>
 <!-- HTML の属性で 複数の警告ダイアログを表示させてみよう(マウスがクリックされた時) -->
-  <a onclick="alert('hiii')">click it</a>
+  <a onclick='alert("clicked"); alert("succeed")'>click me!</a>
 
-  <script type="text/javaScript" src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javaScript" src="js/main.js"></script>
   <noscript>
     JavaScript 未対応ブラウザ、もしくは無効な状態となっています。
   </noscript>
+  <script type="text/javaScript" src="js/main.js"></script>
 </body>
 </html>
