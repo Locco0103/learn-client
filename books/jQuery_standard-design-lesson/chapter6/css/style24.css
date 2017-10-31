@@ -1,0 +1,30 @@
+li{
+  list-style-type: none;
+}
+
+p{
+word-break: break-all;
+}
+
+.mt260{
+  margin-top: 260px;
+}
+
+header{
+  padding: 80px 20px;
+  transition: 300ms;
+}
+
+header > div{
+  font-size: 50px;
+  transition: 300ms;
+}
+
+header.small{
+  padding: 10px 20px;
+}
+
+header.small > div{
+  font-size: 18px;
+  padding: 30px 0;
+}

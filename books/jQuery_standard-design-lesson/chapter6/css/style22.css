@@ -1,0 +1,9 @@
+h2{
+  color: orange;
+  font-weight: bold;
+  font-size: 1.6;
+}
+
+.my-rounded{
+  border-radius: 50px;
+}

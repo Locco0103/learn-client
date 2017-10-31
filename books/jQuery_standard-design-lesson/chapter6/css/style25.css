@@ -1,0 +1,26 @@
+li{
+  list-style-type: none;
+}
+
+li:hover{
+  opacity: 0.2;
+}
+
+p{
+  word-break: break-all;
+}
+
+.py200{
+  padding: 160px 0px;
+}
+
+#nav.fixed{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.lh100{
+  line-height: 100px;
+}
