@@ -1,0 +1,10 @@
+.ml25per{
+  margin-left: 25%;
+}
+
+li{
+  list-style-type: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid hsla(0, 50%, 0%, 1);
+}
