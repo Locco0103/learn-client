@@ -1,0 +1,77 @@
+body{
+  font-family: "Noto Sans", Arial, Tahoma, sans-serif;
+  background-color: hsl(0, 0%, 99%);
+}
+
+ul{
+  list-style-type: none;
+}
+
+.ls-square{
+  list-style-type: square;
+  list-style-position: inside;
+}
+
+#bgHead{
+  background-image: url("../images/top_officechukai.jpg");
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.color1{
+  color: hsl(20, 82%, 52%);
+  transition: all 300ms;
+}
+.color2{
+  color: hsl(0, 0%, 66%);
+}
+.color3{
+  color: hsl(0, 0%, 93%);
+}
+.my-border{
+  border: 2px solid hsl(20, 82%, 52%);
+}
+.my-border2{
+  border-right: 2px solid hsl(0, 0%, 97%);
+}
+.bg-color2{
+  background-color: hsl(0, 0%, 97%);
+}
+.bg-color2:hover{
+  background-color: hsl(0, 0%, 100%);
+}
+.bg-color2.active{
+  background-color: hsl(0, 0%, 98%);
+}
+.bg-color3{
+  background-color: hsl(204, 40%, 28%);
+}
+.bg-color4{
+  background-color: #87bd33;
+}
+.bg-color5{
+  background-color: hsl(205, 40%, 25%);
+}
+.bg-color6{
+  background-color: hsl(204, 40%, 27%);
+}
+
+.py120{
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.lh-my1{
+  line-height: 2.2;
+}
+.lh-my2{
+  line-height: 70px;
+}
+.my-fw{
+  font-weight: 200;
+}
+.my-ls{
+  letter-spacing: 3px;
+}
+.my-ti{
+  text-indent: 36px;
+}
