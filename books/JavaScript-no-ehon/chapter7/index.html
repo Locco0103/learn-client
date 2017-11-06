@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimal-ui">
+  <title>chapter7 browser object</title>
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/phi-jp/meltline/v0.1.0/meltline.css">
+</head>
+<body>
+
+  <form name="practice" action="送信先" method="GET">
+    名前<input type="text" name="nm" value="typeyourname" class="border border-black bg-ghostwhite"><br>
+    ニックネーム<input type="textarea" name="nnm" value="typeyournickname" class="border border-black bg-ghostwhite"><br>
+    頭文字<input type="text" name="knm" value="typeyourinicialname" class="border border-black bg-ghostwhite"><br>
+    <input type="submit" value="送信" class="button">
+  </form>
+
+  <form name="practice2" action="送信先" method="GET">
+    名前<input type="text" name="nm2" class="border border-black bg-ghostwhite"><br>
+    ニックネーム<input type="text" name="nnm2" class="border border-black bg-ghostwhite"><br>
+    頭文字<input type="text" name="knm2" class="border border-black bg-ghostwhite"><br>
+    <input type="submit" value="送信" class="button">
+  </form>
+
+  <form name="forValidate" action="###" method="GET" onsubmit="return check()">
+    <label for="name">name</label>：<input type="text" name="name" id="name">
+    <label for="address">address</label>：<input type="text" name="address" id="address">
+    <label for="subscribe">subscribe</label>：<input type="checkbox" name="subscribe" id="subscribe" value="1">
+    <input type="submit" value="送信">
+  </form>
+
+  <div id="test">
+    Hey Universe!
+  </div>
+
+  <img src="../images/photo1.jpg" id="hari">
+
+  <script type="text/javaScript" src="js/main.js"></script>
+</body>
+</html>
