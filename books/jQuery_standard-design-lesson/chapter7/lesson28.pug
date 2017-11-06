@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimal-ui")
+    title chapter7 lesson28
+    link(rel="stylesheet" href="css/style28.css")
+    link(rel="stylesheet" href="https://cdn.rawgit.com/phi-jp/meltline/v0.1.0/meltline.css")
+  body.bg-ghostwhite.w100per.h100per.text-center
+    div.cornflowerblue.bold.text-center.fs50.py30 Slide fadeIn fadeOut
+
+    div#slideshow.w1000.h550.relative
+        div(data-n="2")#img3.w100per.h100per.absolute.t0.l0.r0.b0
+            img(src="../images/img3.jpg").object-fit-cover
+        div(data-n="1")#img2.w100per.h100per.absolute.t0.l0.r0.b0
+            img(src="../images/img2.jpg").object-fit-cover
+        div(data-n="0")#img1.w100per.h100per.absolute.t0.l0.r0.b0
+            img(src="../images/img1.jpg").object-fit-cover
+
+    div#buttons.f.flex-between.w100.mx-auto
+        div.w20.h20.bg-cornflowerblue.circle.active
+        div.w20.h20.bg-cornflowerblue.circle
+        div.w20.h20.bg-cornflowerblue.circle
+
+    script(src="js/jquery-3.2.1.min.js")
+    script(src="js/main28.js")

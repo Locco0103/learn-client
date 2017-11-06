@@ -1,0 +1,7 @@
+.h550 {
+  height: 550px;
+}
+
+#buttons > div.active {
+  background-color: blue !important;
+}

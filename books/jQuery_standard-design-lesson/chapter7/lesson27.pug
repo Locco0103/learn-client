@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimal-ui")
+    title chapter7 lesson27
+    link(rel="stylesheet" href="css/style27.css")
+    link(rel="stylesheet" href="https://cdn.rawgit.com/phi-jp/meltline/v0.1.0/meltline.css")
+  body.bg-cornflowerblue.w100per.h100per
+    div.ghostwhite.bold.text-center.fs50.py30 Slider
+
+    section#viewer.h50vh.my-w1.mx-auto.overflow-hidden.relative
+        div#slideParts.row.h100per.my-w2
+            div.col4.bg-1
+            div.col4.bg-2
+            div.col4.bg-3
+        img#prev(src="../images/prev.png").absolute.my-t.l10
+        img#next(src="../images/next.png").absolute.my-t.r10
+
+
+    script(src="js/jquery-3.2.1.min.js")
+    script(src="js/main27.js")

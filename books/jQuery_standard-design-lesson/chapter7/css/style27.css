@@ -1,0 +1,18 @@
+.bg-1{
+  background-image: url("../../images/img1.jpg");
+}
+.bg-2{
+  background-image: url("../../images/img2.jpg");
+}
+.bg-3{
+  background-image: url("../../images/img3.jpg");
+}
+.my-w1{
+  width: 1000px;
+}
+.my-w2{
+  width: 3000px;
+}
+.my-t{
+  top: 23vh;
+}
