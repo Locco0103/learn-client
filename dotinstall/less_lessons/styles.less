@@ -1,0 +1,57 @@
+.allred(@border:5px; @color:red) {
+  color: @color;
+  background: @color;
+  border: @border solid @color;
+}
+
+#my-mixin() {
+  background-size: cover;
+  background-position: 100% 50%;
+}
+
+@h1-color: red;
+@h2-color: darken(@h1-color, 10%);
+@p-color: lighten(@h2-color, 10%);
+@h1-size: 24px;
+@h2-size: @h1-size - 4px;
+
+@co: color;
+@header: h;
+@dir: "images/";
+
+@{header}1 {
+  font-size: @h1-size;
+  @{co}: @h1-color;
+}
+@{header}2 {
+  font-size: @h2-size;
+  @{co}: @h2-color;
+}
+p {
+  background: url("@{dir}###");
+  #my-mixin;
+  .allred(10px; blue);
+}
+div{
+  background: url('@{dir}###/###.png');
+  #my-mixin();
+  .allred();
+}
+
+header {
+  font-size: @h1-size;
+  a {
+    @{co}: white;
+    &:hover {
+      @{co}: gray;
+    }
+  }
+  .button {
+    &-ok {
+      @{co}: blue;
+    }
+    &-ng {
+      @{co}: red;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+h1 {
+  font-size: 24px;
+  color: red;
+}
+h2 {
+  font-size: 20px;
+  color: #cc0000;
+}
+p {
+  background: url("images/###");
+  background-size: cover;
+  background-position: 100% 50%;
+  color: blue;
+  background: blue;
+  border: 10px solid blue;
+}
+div {
+  background: url('images/###/###.png');
+  background-size: cover;
+  background-position: 100% 50%;
+  color: red;
+  background: red;
+  border: 5px solid red;
+}
+header {
+  font-size: 24px;
+}
+header a {
+  color: white;
+}
+header a:hover {
+  color: gray;
+}
+header .button-ok {
+  color: blue;
+}
+header .button-ng {
+  color: red;
+}
