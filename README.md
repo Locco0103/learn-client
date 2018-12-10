@@ -32,7 +32,7 @@
 - lp
   - bankjoy
     - index.html
-      - https://cdn.rawgit.com/phi-jp/meltline/v0.0.8/meltline.css
+      - https://cdn.jsdelivr.net/gh/phi-jp/meltline@v0.0.8/meltline.css
     - style.css
     - main.js
     - images
